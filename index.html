@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home - Lumynity Studios</title>
+	<link rel="icon" href="src/resources/assets/favicon.png" type="image/png">
+	<link rel="stylesheet" href="src/css/common/layout.css">
+	<link rel="stylesheet" href="src/css/common/footer.css">
+	<link rel="stylesheet" href="src/css/home.css">
+</head>
+<body>
+
+	<!-- Nav button and panel -->
+	<nav>
+		<button class="nav-button" id="nav-button" aria-label="Open navigation">
+			<svg viewBox="0 0 24 24">
+				<rect y="4"  width="24" height="2.5" rx="1.25"/>
+				<rect y="11" width="24" height="2.5" rx="1.25"/>
+				<rect y="18" width="24" height="2.5" rx="1.25"/>
+			</svg>
+		</button>
+	</nav>
+	<div class="nav-dropdown" id="nav-dropdown">
+		<ul class="nav-links">
+			<li><a href="src/html/news.html">News</a></li>
+			<li><a href="src/html/about.html">About</a></li>
+			<li><a href="src/html/projects.html">Projects</a></li>
+			<li><a href="src/html/contact.html">Contact</a></li>
+			<li><a href="index.html"><img src="src/resources/assets/logo.svg" alt="Lumynity Studios" class="nav-logo"></a></li>
+		</ul>
+	</div>
+
+	<!-- Content -->
+	<main>
+		<div class="home-layout">
+ 
+			<!-- Left card - art space -->
+			<section class="home-art">
+				<!-- Art goes here -->
+			</section>
+ 
+			<section class="home-info-card">
+				<div class="home-title">
+					<h1>Lumynity<br>
+						Studios</h1>
+				</div>
+				<div class="home-about">
+					<p>
+						This text should touch the top margin<br>
+						Test<br>
+						Test<br>
+						Test<br>
+						This should expand the more text is added
+					</p>
+				</div>
+			</section>
+ 
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer>
+		<div class="footer-body">
+
+			<!-- Brand + socials -->
+			<section class="footer-brand">
+				<a href="index.html"><img src="src/resources/assets/render2.svg" alt="Lumynity Studios" class="footer-logo"></a>
+				<div class="footer-socials">
+					<a href="https://google.com" class="footer-social-link" aria-label="Discord">
+						<img src="src/resources/assets/discord.svg" alt="Discord">
+					</a>
+					<a href="https://google.com" class="footer-social-link" aria-label="GitHub">
+						<img src="src/resources/assets/github.svg" alt="GitHub">
+					</a>
+					<a href="https://google.com" class="footer-social-link" aria-label="Twitter">
+						<img src="src/resources/assets/twitter.svg" alt="Twitter">
+					</a>
+					<a href="https://google.com" class="footer-social-link" aria-label="Bluesky">
+						<img src="src/resources/assets/bluesky.svg" alt="Bluesky">
+					</a>
+					<a href="mailto:lumynitystudios@gmail.com" class="footer-social-link" aria-label="Email">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/>
+							<rect x="2" y="4" width="20" height="16" rx="2"/>
+						</svg>
+					</a>
+				</div>
+			</section>
+
+			<!-- Link columns -->
+			<section class="footer-cols">
+				<div class="footer-col">
+					<span class="footer-col-title">About</span>
+					<a href="src/html/news.html">News</a>
+					<a href="https://google.com">Careers</a>
+				</div>
+				<div class="footer-col">
+					<span class="footer-col-title">Resources</span>
+					<a href="https://google.com">Support</a>
+					<a href="https://google.com">Developer Docs</a>
+				</div>
+			</section>
+
+		</div>
+
+		<!-- Disclaimer bar -->
+		<div class="footer-bar">
+			Lumynity Studios is not an official Minecraft service, not affiliated, associated with or approved by Mojang Studios or Microsoft.
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="src/scripts/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+/* HOME PAGE */
+
+.home-layout {
+	display: flex;
+	gap: 20px;
+	align-items: flex-start;
+}
+
+/* Left card - 3:4 portrait */
+.home-art {
+	background: var(--cards);
+	border-radius: 16px;
+	box-shadow: 0 4px 24px var(--shadow);
+	width: 560px;
+	aspect-ratio: 3 / 4;
+	flex-shrink: 0;
+}
+
+/* Right card - 5:3 landscape */
+.home-info-card {
+	background: var(--cards);
+	border-radius: 16px;
+	box-shadow: 0 4px 24px var(--shadow);
+	flex: 1;
+	aspect-ratio: 5 / 3;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.home-title {
+	flex: 2;
+	padding: 10px 28px 10px 28px;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-end;
+}
+.home-title h1 {
+	font-family: var(--font-headers);
+	font-size: clamp(3rem, 5.5vw, 6.5rem);
+	letter-spacing: 2px;
+	font-weight: 600;
+	margin: 0;
+	padding: 0;
+	color: var(--text);
+	text-align: right;
+	line-height: 1.1;
+}
+
+.home-about {
+	flex: 3;
+	padding: 16px 28px;
+	display: flex;
+	align-items: center;
+}
+.home-about p {
+	margin: 0;
+	color: var(--text);
+	line-height: 1.2;
+	text-align: center;
+	width: 100%;
+}

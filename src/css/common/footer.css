@@ -1,0 +1,109 @@
+/* Footer */
+footer {
+	background: linear-gradient(135deg, var(--dark-magenta), var(--dark-magenta), var(--dark-purple), var(--dark-purple));
+	border-top: 2px solid var(--purple);
+	font-family: var(--font-ui);
+	color: var(--text-muted);
+	font-size: 0.9rem;
+}
+.footer-body {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 28px 100px;
+	padding: 32px 32px 24px;
+	align-items: flex-start;
+}
+
+/* Brand + socials */
+.footer-brand {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	min-width: 140px;
+	flex: 0 0 auto;
+}
+.footer-logo {
+	width: 164px;
+	height: auto;
+	object-fit: contain;
+	display: block;
+}
+.footer-socials {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+.footer-social-link {
+	width: 32px;
+	height: 32px;
+	border-radius: 8px;
+	background: rgba(255, 255, 255, 0.06);
+	color: var(--text-muted);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	transition: background 0.15s, color 0.15s;
+}
+.footer-social-link:hover {
+	background: rgba(255, 255, 255, 0.14);
+	color: var(--white);
+	transform: none;
+}
+.footer-social-link svg {
+	width: 22px;
+	height: 22px;
+	stroke: #999;
+	filter: brightness(1);
+	transition: filter 0.15s;
+}
+.footer-social-link:hover svg { filter: brightness(0) invert(1); }
+.footer-social-link img {
+	width: 20px;
+	height: 20px;
+	filter: brightness(0) invert(0.6);
+	transition: filter 0.15s;
+}
+.footer-social-link:hover img { filter: brightness(0) invert(1); }
+
+/* Link columns */
+.footer-cols {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 28px 40px;
+	flex: 1 1 auto;
+}
+.footer-col {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	min-width: 110px;
+}
+.footer-col-title {
+	font-size: 12px;
+	font-weight: 700;
+	color: var(--pink);
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	margin-bottom: 2px;
+}
+.footer-col a {
+	font-size: 13px;
+	color: var(--text-muted);
+	text-decoration: none;
+	transition: color 0.15s;
+}
+.footer-col a:hover {
+	color: var(--text);
+	transform: none;
+}
+
+/* Disclaimer bar */
+.footer-bar {
+	border-top: 1px solid rgba(255, 255, 255, 0.06);
+	padding: 12px 32px;
+	font-size: 11px;
+	color: var(--text-muted);
+	text-align: center;
+	letter-spacing: 0.03em;
+}

@@ -1,29 +1,5 @@
-TODO For Tom:
-- Fix header-right logo to display a tiny render2.svg or logo.svg
-- Add hover-over descriptors(?) to all the buttons when nav is closed
-- Change `overflow-wrap` on meet-the-team profiles to a better value
-
-TODO For Izya:
-- Add animations
-  - Footer block drop when scrolling
-  - Smooth text movement instead of snapping
-  - Smooth card reshaping/moving
-- Improve News page article layout
-- Add News articles preview on home page
-
-TODO For Millie:
-- Finish writing all articles                         | WIP
-- Start writing content of more site pages            | WIP (Waiting for Tom to fix card containment)
-- Make seperate layouts for hiring and dev docs pages | DIDN'T START
-  - Will probably need help from Tom
-- Make socials (footer block) links open new tabs
-
-TODO Unassigned:
-- Make nav not close for split second when page refreshes
-- Make cards and images not appear massive for split second when refreshing at high zoom
-- Make the site's codebase not look like a mess and optimzie it
-  - Properly use <header>, <footer>, <main>, <section>, <div> etc
-  - Move CSS out of .astro files
-    - That's advice from Millie's web design & developemnt teacher
-  - Optimize scripts
-- Create a mobile layout to use the full width for the content (navbar up top?, use CSS media queries)
+- Fix scaling for the cards
+- Do a tiny bit of pushing things when nav gets expanded because bottom side is longer than top side
+- Actually finish the rest of the site
+- Convert to astro if whole division approves
+- Make proper mobile layout
