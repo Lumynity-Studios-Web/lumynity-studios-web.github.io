@@ -1,4 +1,4 @@
-# lumynity-studios.github.io
+# lumynitystudios.net
 About Lumynity Studios and a collection of documentations about our projects
 
 ## Commands
