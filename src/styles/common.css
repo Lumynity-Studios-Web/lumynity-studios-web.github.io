@@ -80,58 +80,6 @@ main {
     left: 12px;
 }
 
-/* links leading to team's socials */
-.btn-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background-image: var(--btn-link), var(--btn-link);
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    color: var(--text-white);
-
-    border: 2px solid transparent;
-    border-radius: var(--btn-round);
-	box-shadow: var(--tab-shadow-hard);
-
-    max-width: var(--btn-max);
-    max-height: var(--btn-max);
-    width: var(--btn-wh);
-    height: var(--btn-wh);
-
-    transition: transform 0.25s ease;
-}
-
-.btn-link:hover {
-    background-image: var(--btn-link-hover), var(--btn-link-outline-hover);
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-
-    border: 2px solid transparent;
-
-    transform: translateY(-5px);
-}
-.link-modrinth:hover {
-    color: var(--brand-modrinth);
-}
-.link-curseforge:hover {
-    color: var(--brand-curseforge);
-}
-.link-discord:hover {
-    color: var(--brand-discord);
-}
-.link-twitter:hover {
-    color: var(--brand-twitter);
-}
-.link-maven:hover {
-    color: var(--brand-maven);
-}
-
-.btn-link-img {
-    width: 70%;
-}
-
 /* Always present discalimer at the bottom of the page */
 .footer-disclaimer {
     font-size: small;

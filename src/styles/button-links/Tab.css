@@ -1,0 +1,19 @@
+/* section container for team's social links */
+.tab-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--tab-fill);
+
+    border-radius: var(--sqr-round-all);
+    box-shadow: var(--tab-shadow);
+
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.8rem;
+    gap: 2.5rem;
+
+    max-width: var(--w-max);
+    width: var(--w-s);
+}
