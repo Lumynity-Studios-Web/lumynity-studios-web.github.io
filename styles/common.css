@@ -28,8 +28,7 @@
     --btn-link: linear-gradient(165deg, var(--tab-fill), var(--tab-fill-select-gradient-1));
     --btn-link-hover: linear-gradient(165deg, var(--tab-fill-select-gradient-1), var(--tab-fill-select-gradient-2)); 
     --btn-link-outline-hover: linear-gradient(165deg, var(--tab-outline-hover-1), var(--tab-outline-hover-2)); 
-    --text-white: #f0f0f0;
-    --text-pure-white: #fff;
+    --text-white: #f0f0f0; /* pure white (fff) might cause eye train for some people (like Mili) */
     --text-pink: #f0a8e8;
     --text-light-muted: #969ea7;
     --text-hard-muted: #7c8288;
@@ -68,18 +67,9 @@ main {
 
 /* top-left corner fixed position home button */
 .btn-home {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     position: absolute;
     top: 12px;
     left: 12px;
-
-    max-width: var(--btn-max);
-    max-height: var(--btn-max);
-    width: var(--btn-wh);
-    height: var(--btn-wh);
 }
 
 /* links leading to team's socials */
@@ -121,6 +111,7 @@ main {
 /* Always present discalimer at the bottom of the page */
 .footer-disclaimer {
     font-size: small;
+    letter-spacing: 0.05rem;
 
     display: flex;
     align-items: center;

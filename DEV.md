@@ -2,6 +2,7 @@
 Use: https://nekocalc.com/px-to-rem-converter
 
 **Mesurement Uses**
+- Font/text stuff: em
 - Max Width, Max Height, Width, Height: px
 - Border, Border Radius: px
 - Padding, Gap: rem
