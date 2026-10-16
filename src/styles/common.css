@@ -34,6 +34,13 @@
     --text-light-muted: #969ea7;
     --text-hard-muted: #7c8288;
 
+    --brand-modrinth: #46d66d;
+    --brand-curseforge: #f16433;
+    --brand-discord: #5662f6;
+    --brand-twitter: #00a2f5;
+    /* GitHub stays white */
+    --brand-maven: #389fd6;
+
 	--font: "Noto Sans", Arial, Inter;
     --font-spoiler: Arial; /* Temp value, will change */
 	--font-editor: "JetBrains Mono", Arial, Inter, monospace;
@@ -95,6 +102,7 @@ main {
 
     transition: transform 0.25s ease;
 }
+
 .btn-link:hover {
     background-image: var(--btn-link-hover), var(--btn-link-outline-hover);
     background-origin: border-box;
@@ -104,8 +112,23 @@ main {
 
     transform: translateY(-5px);
 }
+.link-modrinth:hover {
+    color: var(--brand-modrinth);
+}
+.link-curseforge:hover {
+    color: var(--brand-curseforge);
+}
+.link-discord:hover {
+    color: var(--brand-discord);
+}
+.link-twitter:hover {
+    color: var(--brand-twitter);
+}
+.link-maven:hover {
+    color: var(--brand-maven);
+}
 
-.img-link {
+.btn-link-img {
     width: 70%;
 }
 
