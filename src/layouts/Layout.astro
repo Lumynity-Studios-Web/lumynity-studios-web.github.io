@@ -1,4 +1,7 @@
 ---
+import '../styles/Layout.css';
+import '../styles/icons.css';
+
 interface Props {
   title?: string,
 }
@@ -11,8 +14,6 @@ const { title = 'Lumynity Studios' } = Astro.props;
         <meta charset="UTF-8">
         <title>{ title }</title>
         <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-        <link rel="stylesheet" href="styles/common.css">
-        <link rel="stylesheet" href="styles/icons.css">
     </head>
     <body>
         <header>
