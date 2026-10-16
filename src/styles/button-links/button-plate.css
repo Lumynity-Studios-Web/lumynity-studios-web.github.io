@@ -1,5 +1,5 @@
-/* section container for team's social links */
-.tab-links {
+/* section container for team's social links for the home page only */
+.button-plate {
     display: flex;
     align-items: center;
     justify-content: center;
