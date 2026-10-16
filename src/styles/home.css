@@ -21,6 +21,7 @@ header {
     margin-bottom: 48px;
     padding: 0px 30px;
     gap: 15px 15px;
+    align-items: stretch;
 
     max-width: 1200px;
 }
