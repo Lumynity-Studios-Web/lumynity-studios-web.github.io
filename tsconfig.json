@@ -1,0 +1,20 @@
+{
+  "$schema": "https://www.schemastore.org/tsconfig.json",
+  "extends": "astro/tsconfigs/strict",
+  "contentMappers": [
+    {
+      "package": "@astrojs/ts-content-mapper",
+      "extensions": [
+        ".astro"
+      ],
+    }
+  ],
+  "include": [
+    ".astro/types.d.ts",
+    "src/**/*",
+    "public/**/*"
+  ],
+  "exclude": [
+    "dist"
+  ],
+}

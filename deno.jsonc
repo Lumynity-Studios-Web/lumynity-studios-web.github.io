@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/denoland/deno/refs/heads/main/cli/schemas/config-file.v1.json",
+  "allowScripts": [
+    "npm:esbuild@0.27.7"
+    // "npm:sharp@0.34.5"
+  ],
+  "tasks": {
+    "astro": "astro",
+    "dev": "astro dev",
+    "build": "deno task tsc-check && astro build",
+    "preview": "deno task build && deno serve --allow-read preview.ts",
+    "tsc-check": "tsc -noEmit --runExternalCode"
+    // "check": "astro check"
+  },
+  "nodeModulesDir": "auto",
+  "imports": {
+    // "@astrojs/check": "npm:@astrojs/check@^0.9.10", // @astro/check does not support typescript 7 yet
+    "@astrojs/ts-content-mapper": "npm:@astrojs/ts-content-mapper@^0.2.0",
+    "@std/assert": "jsr:@std/assert@^1.0.19",
+    "@std/http": "jsr:@std/http@^1.1.4",
+    "@std/path": "jsr:@std/path@^1.1.6",
+    "astro": "npm:astro@^7.4.0",
+    // "sharp": "npm:sharp@^0.34.5",
+    "typescript": "npm:typescript@7.1.0-dev.20261015.1" // @astrojs/ts-content-mapper requires typescript 7.1, set this to a stable version on release
+  }
+}
