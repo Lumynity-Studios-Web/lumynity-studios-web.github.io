@@ -1,0 +1,139 @@
+:root {
+    --w-max: 1000px; /* Max width for most elements */
+    --h-max: 500px; /* Max height for most elements */
+    --w-s: 600px; /* Default small width for most elements */
+    --w-m: 700px; /* Default medium width for most elements */
+    --w-l: 800px; /* Default large width for most elements */
+    --w-xl: 900px; /* Default XL width for most elements */
+
+    --btn-max: 80px; /* Max button width/height */
+    --btn-wh: 50px; /* Default button width/height */
+    --btn-round: 20px; /* Default button roundness */
+
+    --sqr-round-all: 15px;
+    --sqr-round-top: 15px 15px 0 0;
+    --sqr-round-dwn: 0 0 15px 15px;
+
+    --background: #16181C;
+    --background-fade: #0a0b0c;
+    --tab-fill: #26292F;
+    --tab-fill-select-gradient-1: #2a0723;
+	--tab-fill-select-gradient-2: #17072a;
+	--tab-outline-hover-1: #f748d4;
+	--tab-outline-hover-2: #9646f5;
+    --tab-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+    --tab-shadow-hard: 0 6px 14px rgba(0, 0, 0, 0.8);
+    --btn-fill: #26292F;
+    --btn-outline: #303236;
+    --btn-link: linear-gradient(165deg, var(--tab-fill), var(--tab-fill-select-gradient-1));
+    --btn-link-outline-hover: linear-gradient(165deg, var(--tab-outline-hover-1), var(--tab-outline-hover-2)); 
+    --text-white: #f0f0f0;
+    --text-pink: #f0a8e8;
+    --text-light-muted: #969ea7;
+    --text-hard-muted: #7c8288;
+
+	--font: "Noto Sans", Arial, Inter;
+    --font-spoiler: Arial; /* Temp value, will change */
+	--font-editor: "JetBrains Mono", Arial, Inter, monospace;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+html { /* Ignored on most browsers but whatever */
+    zoom: reset;
+}
+header {
+    position: relative;
+}
+body {
+	font-family: var(--font);
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--background);
+	background-image: linear-gradient(to bottom, var(--background) 60%, var(--background-fade) 100%);
+	background-attachment: fixed;
+    color: var(--text-white);
+
+    min-height: 100vh; /* Guarantees at least full viewport height even if not enough content */
+}
+main {
+    flex: 1;
+}
+
+/* top-left corner fixed position home button */
+.btn-home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 12px;
+    left: 12px;
+
+    max-width: var(--btn-max);
+    max-height: var(--btn-max);
+    width: var(--btn-wh);
+    height: var(--btn-wh);
+}
+
+/* links leading to team's socials */
+.btn-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-image: var(--btn-link), var(--btn-link);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+
+    border: 2px solid transparent;
+    border-radius: var(--btn-round);
+	box-shadow: var(--tab-shadow-hard);
+
+    max-width: var(--btn-max);
+    max-height: var(--btn-max);
+    width: var(--btn-wh);
+    height: var(--btn-wh);
+
+    transition: transform 0.25s ease;
+}
+.btn-link:hover {
+    background-image: var(--btn-link), var(--btn-link-outline-hover);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+
+    border: 2px solid transparent;
+
+    transform: translateY(-5px);
+}
+
+a .img-link {
+    width: 70%;
+}
+
+/* Always present discalimer at the bottom of the page */
+.footer-disclaimer {
+    font-size: small;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--tab-fill);
+    color: var(--text-hard-muted);
+
+    border: 1px solid var(--tab-outlines);
+    border-radius: var(--sqr-round-top);
+	box-shadow: var(--tab-shadow);
+
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+
+    max-width: var(--w-max);
+    width: var(--w-l);
+}

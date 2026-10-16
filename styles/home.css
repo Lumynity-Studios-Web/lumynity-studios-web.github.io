@@ -1,0 +1,74 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+/* The big ass image at the top */
+#titlecard {
+    max-width: var(--w-max);
+    width: var(--w-s);
+}
+
+/* section with all the page tabs */
+#page-tabs {
+    align-items: center;
+    justify-content: center;
+
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 48px;
+
+    max-width: 1200px;
+    max-height: var(--h-max);
+    width: 1200px;
+    height: var(--h-max);
+}
+
+/* page tabs ;eading to other pages of the site */
+.page-tab {
+    float: left;
+
+    background-color: var(--tab-fill);
+
+    border: 2px solid var(--btn-outline);
+    border-radius: var(--btn-round);
+	box-shadow: var(--tab-shadow);
+
+    margin: 0.5%;
+
+    width: 32%;
+    height: 49%;
+
+    transition: transform 0.25s ease;
+}
+.page-tab:hover {
+    background-image: linear-gradient(var(--tab-fill)), linear-gradient(165deg, var(--tab-outline-hover-1), var(--tab-outline-hover-2));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+
+    border: 2px solid transparent;
+
+    transform: translateY(-8px);
+}
+
+/* section container for team's social links */
+.tab-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--tab-fill);
+
+    border-radius: var(--sqr-round-all);
+	box-shadow: var(--tab-shadow);
+
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.8rem;
+    gap: 2.5rem;
+
+    max-width: var(--w-max);
+    width: var(--w-s);
+}
