@@ -40,7 +40,10 @@ header {
 
     border: 2px solid var(--btn-outline);
     border-radius: var(--btn-round);
+    box-sizing: border-box;
 	box-shadow: var(--tab-shadow);
+
+    padding: 1rem;
 
     width: 100%;
     height: 100%;

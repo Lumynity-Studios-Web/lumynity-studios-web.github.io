@@ -15,17 +15,17 @@
     --sqr-round-top: 15px 15px 0 0;
     --sqr-round-dwn: 0 0 15px 15px;
 
+    --btn-outline: #303236;
+    --tab-fill: #26292F;
+    --btn-fill: #26292F;
     --background: #16181C;
     --background-fade: #0a0b0c;
-    --tab-fill: #26292F;
     --tab-fill-select-gradient-1: #4b1063;
 	--tab-fill-select-gradient-2: #230b3d;
 	--tab-outline-hover-1: #f748d4;
 	--tab-outline-hover-2: #9646f5;
     --tab-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
     --tab-shadow-hard: 0 6px 14px rgba(0, 0, 0, 0.8);
-    --btn-fill: #26292F;
-    --btn-outline: #303236;
     --btn-link: linear-gradient(165deg, var(--tab-fill), var(--tab-fill-select-gradient-1));
     --btn-link-hover: linear-gradient(165deg, var(--tab-fill-select-gradient-1), var(--tab-fill-select-gradient-2)); 
     --btn-link-outline-hover: linear-gradient(165deg, var(--tab-outline-hover-1), var(--tab-outline-hover-2)); 
@@ -71,6 +71,14 @@ body {
 }
 main {
     flex: 1;
+}
+
+hr {
+  background: linear-gradient(to right, transparent, var(--btn-outline) 25%, var(--btn-outline) 75%, transparent);
+  border: none;
+  margin: 1rem auto;
+  width: 75%;
+  height: 2px;
 }
 
 /* top-left corner fixed position home button */

@@ -13,7 +13,7 @@ Use: https://nekocalc.com/px-to-rem-converter
   - Used templates: `grid-template-columns`
 - Position
 - Background, Background Image, Background Origin, Background Clip, Color
-- Border, Border Image, Border Radius, Box Shadow
+- Border, Border Image, Border Radius, Box Sizing, Box Shadow
 - Margins, Padding, Gap
 - Max Width, Max Height, Width, Height
 - Animation (Transition)

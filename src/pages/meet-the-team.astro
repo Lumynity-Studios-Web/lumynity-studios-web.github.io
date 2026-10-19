@@ -1,6 +1,65 @@
 ---
 import Common from '../layouts/Common.astro';
+import '../styles/meet-the-team.css';
+
+import { fetchMember } from '../scripts/dc-fetch.js';
+
+/* TODO: expand on descriptions later */
+const java_team = [
+  {id:"942863021733212191", occupation:"Lead developer, artist, writer, translator (EN, PL)", desc:"Team lead and a Minecraft-loving catgirl vtuber that makes mods simply for the love of the game."},
+  {id:"625373665508327434", occupation:"Lead developer", desc:"Placeholder description"},
+  {id:"708095717796872315", occupation:"Artist", desc:"Placeholder description"},
+  {id:"847899510989520977", occupation:"Artist", desc:"Placeholder description"},
+  {id:"1290096840850542676", occupation:"Music producer", desc:"Placeholder description"},
+  {id:"689825815738843285", occupation:"Playtester", desc:"Placeholder description"},
+  {id:"1151478242675540109", occupation:"Translator - German", desc:"Placeholder description"},
+  {id:"577195801332154368", occupation:"Translator - Russian", desc:"Placeholder description"},
+  {id:"776670925688930304", occupation:"Translator - Portuguese (Brazil)", desc:"Placeholder description"}
+];
+const web_team = [
+  {id:"942863021733212191", occupation:"Developer, artist, writer", desc:""}, /* leave desc empty here, don't repeat desc from before */
+  {id:"416282090397761547", occupation:"Lead developer", desc:"Placeholder description"},
+  {id:"689825815738843285", occupation:"???", desc:"Placeholder description"}
+];
+
+const java = await Promise.all(
+  java_team.map(async ({ id, ...info }) => ({ ...(await fetchMember(id)), ...info })),
+);
+
+const web = await Promise.all(
+  web_team.map(async ({ id, ...info }) => ({ ...(await fetchMember(id)), ...info })),
+);
 ---
 
 <Common>
+    <!-- TODO: format it a bit more nicely -->
+
+    <h1 class="meet-header">Meet The Team</h1>
+    <h3 class="team-type-header">Minecraft Modders</h3>
+    <section id="member-tabs">
+        {java.map((member) => (
+            <div class="member-tab">
+                <img class="member-pfp" src={member.avatar} alt={`${member.name}'s Discord avatar`} width="128" height="128">
+                <div>
+                    <h2 class="member-name">{member.name}</h2>
+                    <p class="member-occupation">{member.occupation}</p>
+                    <p class="member-desc">{member.desc}</p>
+                </div>
+            </div>
+        ))}
+    </section>
+
+    <h3 class="team-type-header">Web Developers</h3>
+    <section id="member-tabs">
+        {web.map((member) => (
+            <div class="member-tab">
+                <img class="member-pfp" src={member.avatar} alt={`${member.name}'s Discord avatar`} width="128" height="128">
+                <div>
+                    <h2 class="member-name">{member.name}</h2>
+                    <p class="member-occupation">{member.occupation}</p>
+                    <p class="member-desc">{member.desc}</p>
+                </div>
+            </div>
+        ))}
+    </section>
 </Common>
