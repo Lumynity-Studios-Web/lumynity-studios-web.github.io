@@ -38,12 +38,12 @@ header {
 
 /* page tabs ;eading to other pages of the site */
 .page-tab {
-    background-color: var(--tab-fill);
+    background-color: var(--dark-gray);
 
-    border: 2px solid var(--btn-outline);
+    border: 2px solid var(--gray);
     border-radius: var(--btn-round);
     box-sizing: border-box;
-	box-shadow: var(--tab-shadow);
+	box-shadow: var(--box-shadow);
 
     padding: 1rem;
 
@@ -54,7 +54,7 @@ header {
     transition: transform 0.25s ease;
 }
 .page-tab:hover {
-    background-image: linear-gradient(var(--tab-fill)), linear-gradient(165deg, var(--tab-outline-hover-1), var(--tab-outline-hover-2));
+    background-image: linear-gradient(var(--dark-gray)), linear-gradient(165deg, var(--magenta), var(--purple));
     background-origin: border-box;
     background-clip: padding-box, border-box;
 

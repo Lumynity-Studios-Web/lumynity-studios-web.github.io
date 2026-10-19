@@ -15,24 +15,25 @@
     --sqr-round-top: 15px 15px 0 0;
     --sqr-round-dwn: 0 0 15px 15px;
 
-    --btn-outline: #303236;
-    --tab-fill: #26292F;
-    --btn-fill: #26292F;
-    --background: #16181C;
-    --background-fade: #0a0b0c;
-    --tab-fill-select-gradient-1: #4b1063;
-	--tab-fill-select-gradient-2: #230b3d;
-	--tab-outline-hover-1: #f748d4;
-	--tab-outline-hover-2: #9646f5;
-    --tab-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
-    --tab-shadow-hard: 0 6px 14px rgba(0, 0, 0, 0.8);
-    --btn-link: linear-gradient(165deg, var(--tab-fill), var(--tab-fill-select-gradient-1));
-    --btn-link-hover: linear-gradient(165deg, var(--tab-fill-select-gradient-1), var(--tab-fill-select-gradient-2)); 
-    --btn-link-outline-hover: linear-gradient(165deg, var(--tab-outline-hover-1), var(--tab-outline-hover-2)); 
-    --text-white: #f0f0f0; /* pure white (fff) might cause eye train for some people (like Mili) */
-    --text-pink: #f0a8e8;
-    --text-light-muted: #969ea7;
-    --text-hard-muted: #7c8288;
+    --white: #fff;
+    --whiteish: #f0f0f0; /* pure white (fff) might cause eye train for some people (like Mili) */
+    --very-light-gray: #969ea7;
+    --light-gray: #7c8288;
+    --gray: #303236;
+    --dark-gray: #26292F;
+    --very-dark-gray: #16181C;
+    --close-black: #0a0b0c;
+    --black: #000;
+    --pink: #f0a8e8;
+	--magenta: #f748d4;
+	--purple: #9646f5;
+    --dark-purple: #4b1063;
+	--violet: #230b3d;
+    --box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+    --box-shadow-hard: 0 6px 14px rgba(0, 0, 0, 0.8);
+    --btn-link: linear-gradient(165deg, var(--dark-gray), var(--dark-purple));
+    --btn-link-hover: linear-gradient(165deg, var(--dark-purple), var(--violet)); 
+    --btn-link-outline-hover: linear-gradient(165deg, var(--magenta), var(--purple)); 
 
     --brand-modrinth: #46d66d;
     --brand-curseforge: #f16433;
@@ -62,10 +63,10 @@ body {
     display: flex;
     flex-direction: column;
 
-    background-color: var(--background);
-	background-image: linear-gradient(to bottom, var(--background) 60%, var(--background-fade) 100%);
+    background-color: var(--very-dark-gray);
+	background-image: linear-gradient(to bottom, var(--very-dark-gray) 60%, var(--close-black) 100%);
 	background-attachment: fixed;
-    color: var(--text-white);
+    color: var(--whiteish);
 
     min-height: 100vh; /* Guarantees at least full viewport height even if not enough content */
 }
@@ -74,7 +75,7 @@ main {
 }
 
 hr {
-  background: linear-gradient(to right, transparent, var(--btn-outline) 25%, var(--btn-outline) 75%, transparent);
+  background: linear-gradient(to right, transparent, var(--gray) 25%, var(--gray) 75%, transparent);
   border: none;
   margin: 1rem auto;
   width: 75%;
@@ -97,7 +98,7 @@ hr {
     align-items: center;
     justify-content: center;
 
-    color: var(--text-hard-muted);
+    color: var(--light-gray);
 
     margin-left: auto;
     margin-right: auto;
