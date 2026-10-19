@@ -27,8 +27,7 @@
     background-clip: padding-box, border-box;
 
     border: 2px solid transparent;
-}
-.btn-link:not(.no-hover-transform):hover {
+
     transform: translateY(-5px);
 }
 .link-modrinth:hover {

@@ -6,22 +6,15 @@ interface Props extends HTMLAttributes<'svg'> {
   title: string,
   href: string,
   newTab?: boolean,
-  hoverTransform?: boolean,
 }
-const { name, title, href, newTab = true, hoverTransform = true, ...svgProps } = Astro.props;
+const { name, title, href, newTab = true, ...svgProps } = Astro.props;
 if (typeof newTab !== 'boolean') {
   throw new TypeError('newTab attribute must be a boolean (wrap it in curly braces like `newTab={ false }`)');
-}
-if (typeof hoverTransform !== 'boolean') {
-  throw new TypeError('hoverTransform attribute must be a boolean (wrap it in curly braces like `hoverTransform={ false }`)');
 }
 
 let classes = ['btn-link'];
 if (name) {
   classes.push('link-' + name);
-}
-if (!hoverTransform) {
-  classes.push('no-hover-transform');
 }
 
 const newTabProps = newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {};
