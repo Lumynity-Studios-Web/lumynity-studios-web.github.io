@@ -42,9 +42,9 @@
     /* GitHub stays white */
     --brand-maven: #389fd6;
 
-	--font: "Noto Sans", Arial, Inter;
-    --font-spoiler: Arial; /* Temp value, will change */
-	--font-editor: "JetBrains Mono", Arial, Inter, monospace;
+	--font-nsans: "Noto Sans", Arial, Inter; /* Font for most of the website */
+    --font-varela: "Varela Round", Arial, Inter; /* Font for headers */
+	--font-jbmono: "JetBrains Mono", Arial, Inter; /* Font for code blocks */
 }
 
 html, body {
@@ -54,11 +54,8 @@ html, body {
 html { /* Ignored on most browsers but whatever */
     zoom: reset;
 }
-header {
-    position: relative;
-}
 body {
-	font-family: var(--font);
+	font-family: var(--font-nsans);
 
     display: flex;
     flex-direction: column;
@@ -70,8 +67,19 @@ body {
 
     min-height: 100vh; /* Guarantees at least full viewport height even if not enough content */
 }
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
 main {
     flex: 1;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-varela);
 }
 
 hr {
