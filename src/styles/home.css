@@ -31,7 +31,9 @@ header {
 
 #page-tabs > a {
     display: flex;
-    flex: 0 1 calc((100% - 30px) / 3);
+
+    min-width: 300px;
+    width: calc((100% - 30px) / 3);
 }
 
 /* page tabs ;eading to other pages of the site */
