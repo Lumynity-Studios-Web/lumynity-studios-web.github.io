@@ -17,3 +17,10 @@
     max-width: var(--w-max);
     width: var(--w-s);
 }
+
+.button-plate > .btn-link {
+    transition: transform 0.25s ease;
+}
+.button-plate > .btn-link:hover {
+    transform: translateY(-5px);
+}

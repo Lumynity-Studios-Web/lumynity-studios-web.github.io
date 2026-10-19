@@ -17,8 +17,6 @@
     max-height: var(--btn-max);
     width: var(--btn-wh);
     height: var(--btn-wh);
-
-    transition: transform 0.25s ease;
 }
 
 .btn-link:hover {
@@ -27,8 +25,6 @@
     background-clip: padding-box, border-box;
 
     border: 2px solid transparent;
-
-    transform: translateY(-5px);
 }
 .link-modrinth:hover {
     color: var(--brand-modrinth);
