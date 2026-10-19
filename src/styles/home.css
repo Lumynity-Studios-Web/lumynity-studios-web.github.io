@@ -1,3 +1,7 @@
+header {
+    padding: 2rem 0;
+}
+
 /* The big ass image at the top */
 #titlecard {
     max-width: var(--w-max);
