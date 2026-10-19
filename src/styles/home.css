@@ -35,6 +35,7 @@ header {
 /* page tabs ;eading to other pages of the site */
 .page-tab {
     background-color: var(--dark-gray);
+    color: var(--whiteish);
 
     border: 2px solid var(--gray);
     border-radius: var(--btn-round);
