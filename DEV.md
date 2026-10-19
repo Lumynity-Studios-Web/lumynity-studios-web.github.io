@@ -9,7 +9,7 @@ Use: https://nekocalc.com/px-to-rem-converter
 
 **Order**
 - System (Font etc.)
-- Display, Flex Direction, Float, Templates, Algin Items, Justify Content
+- Display, Flex, Flex Direction, Float, Templates, Algin Items, Justify Content
   - Used templates: `grid-template-columns`
 - Position
 - Background, Background Image, Background Origin, Background Clip, Color
