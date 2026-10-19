@@ -104,3 +104,11 @@ hr {
     margin-right: auto;
     padding: 1rem;
 }
+
+.wip-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+}
