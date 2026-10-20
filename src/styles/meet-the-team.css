@@ -1,16 +1,20 @@
 /* TODO: format it a bit more nicely */
 
 .meet-header {
+    font-size: 4rem;
+    font-style: italic;
+
     display: flex;
     align-items: center;
     justify-content: center;
-
-    padding-top: 1rem;
 }
+
 .team-type-header {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    margin-top: -1rem;
 }
 
 #member-tabs {
@@ -60,10 +64,10 @@
 .member-occupation {
     font-size: smaller;
     color: var(--light-gray);
-    margin: 0 -0.5rem 0 0.5rem;
+    margin-top: -0.625rem;
 }
 
 .member-desc {
     color: var(--very-light-gray);
-    margin: 0;
+    margin-top: -0.75rem;
 }
