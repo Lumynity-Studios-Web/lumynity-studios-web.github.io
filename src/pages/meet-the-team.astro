@@ -5,29 +5,29 @@ import '../styles/meet-the-team.css';
 import { fetchMember } from '../scripts/dc-fetch.js';
 
 /* TODO: expand on descriptions later */
-const java_team = [
-  {id:"942863021733212191", occupation:"Lead Developer, Artist, Translator (ENG, POL)", desc:"Placeholder description"},
-  {id:"625373665508327434", occupation:"Lead Developer", desc:"Placeholder description"},
-  {id:"708095717796872315", occupation:"Artist", desc:"Placeholder description"},
-  {id:"847899510989520977", occupation:"Artist", desc:"Placeholder description"},
-  {id:"1290096840850542676", occupation:"Music Producer", desc:"Placeholder description"},
-  {id:"689825815738843285", occupation:"Playtester", desc:"Placeholder description"},
-  {id:"1151478242675540109", occupation:"Writer, Translator (GER)", desc:"Placeholder description"},
-  {id:"577195801332154368", occupation:"Translator (RUS)", desc:"Placeholder description"},
-  {id:"776670925688930304", occupation:"Translator (POR)", desc:"Placeholder description"}
+const modders = [
+    {id:"942863021733212191", occupation:"Lead Developer, Artist, Translator (ENG, POL)", desc:"Placeholder description"},
+    {id:"625373665508327434", occupation:"Lead Developer", desc:"Placeholder description"},
+    {id:"708095717796872315", occupation:"Artist", desc:"Placeholder description"},
+    {id:"847899510989520977", occupation:"Artist", desc:"Placeholder description"},
+    {id:"1290096840850542676", occupation:"Music Producer", desc:"Placeholder description"},
+    {id:"689825815738843285", occupation:"Playtester", desc:"Placeholder description"},
+    {id:"1151478242675540109", occupation:"Writer, Translator (GER)", desc:"Moth? Cat? Dreamweaver? No matter what she is, she'll make sure that everyone's having a wonderful time and the sweetest of dreams =^.w.^="},
+    {id:"577195801332154368", occupation:"Translator (RUS)", desc:"Placeholder description"},
+    {id:"776670925688930304", occupation:"Translator (POR)", desc:"Placeholder description"}
 ];
-const web_team = [
-  {id:"416282090397761547", occupation:"Lead developer", desc:"Placeholder description"},
-  {id:"942863021733212191", occupation:"Developer, Artist, Writer", desc:""}, /* leave empty, don't repeat descriptions */
-  {id:"1151478242675540109", occupation:"Artist, Writer", desc:""}
+const webdevs = [
+    {id:"416282090397761547", occupation:"Lead developer", desc:"Placeholder description"},
+    {id:"942863021733212191", occupation:"Developer, Artist, Writer", desc:""}, /* leave empty, don't repeat descriptions */
+    {id:"1151478242675540109", occupation:"Artist, Writer", desc:""}
 ];
 
 const java = await Promise.all(
-  java_team.map(async ({ id, ...info }) => ({ ...(await fetchMember(id)), ...info })),
+    modders.map(async ({ id, ...info }) => ({ ...(await fetchMember(id)), ...info })),
 );
 
 const web = await Promise.all(
-  web_team.map(async ({ id, ...info }) => ({ ...(await fetchMember(id)), ...info })),
+    webdevs.map(async ({ id, ...info }) => ({ ...(await fetchMember(id)), ...info })),
 );
 ---
 
