@@ -11,7 +11,7 @@
 
     border: 2px solid transparent;
     border-radius: var(--btn-round);
-	box-shadow: var(--box-shadow-hard);
+    box-shadow: var(--box-shadow-hard);
 
     max-width: var(--btn-max);
     max-height: var(--btn-max);

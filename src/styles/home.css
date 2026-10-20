@@ -40,7 +40,7 @@ header {
     border: 2px solid var(--gray);
     border-radius: var(--btn-round);
     box-sizing: border-box;
-	box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow);
 
     padding: 1rem;
 
@@ -51,7 +51,8 @@ header {
     transition: transform 0.25s ease;
 }
 .page-tab:hover {
-    background-image: linear-gradient(var(--dark-gray)), linear-gradient(165deg, var(--magenta), var(--purple));
+    background-image: linear-gradient(var(--dark-gray)), linear-gradient(165deg,
+        var(--magenta), var(--purple));
     background-origin: border-box;
     background-clip: padding-box, border-box;
 

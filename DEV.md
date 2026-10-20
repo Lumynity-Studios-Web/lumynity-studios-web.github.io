@@ -1,13 +1,14 @@
-**PX to REM**<br>
-Use: https://nekocalc.com/px-to-rem-converter
+**PX to REM**<br> Use: https://nekocalc.com/px-to-rem-converter
 
 **Mesurement Uses**
+
 - Font/text stuff: em
 - Max Width, Max Height, Width, Height: px
 - Border, Border Radius: px
 - Padding, Gap: rem
 
 **Order**
+
 - System (Font etc.)
 - Display, Flex, Flex Direction, Float, Templates, Algin Items, Justify Content
   - Used templates: `grid-template-columns`
@@ -19,6 +20,8 @@ Use: https://nekocalc.com/px-to-rem-converter
 - Animation (Transition)
 
 **CSS for each HTML**
+
 - `common.css` is shared between all
 - `home.css` is specific to `index.html` at root
-*More to be made soon-ish*
+
+_More to be made soon-ish_

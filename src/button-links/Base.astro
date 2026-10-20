@@ -4,26 +4,30 @@ import { type HTMLAttributes } from 'astro/types';
 import '../styles/button-links/button-link.css';
 
 interface Props extends HTMLAttributes<'svg'> {
-  name?: string,
-  title: string,
-  href: string,
-  newTab?: boolean,
+    name?: string;
+    title: string;
+    href: string;
+    newTab?: boolean;
 }
 const { name, title, href, newTab = true, ...svgProps } = Astro.props;
 if (typeof newTab !== 'boolean') {
-  throw new TypeError('newTab attribute must be a boolean (wrap it in curly braces like `newTab={ false }`)');
+    throw new TypeError(
+        'newTab attribute must be a boolean (wrap it in curly braces like `newTab={ false }`)',
+    );
 }
 
 let classes = ['btn-link'];
 if (name) {
-  classes.push('link-' + name);
+    classes.push('link-' + name);
 }
 
-const newTabProps = newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+const newTabProps = newTab
+    ? { target: '_blank', rel: 'noopener noreferrer' }
+    : {};
 ---
-
 <a class:list={ classes } href={ href } { ...newTabProps } aria-label={ title }>
-    <svg class="btn-link-img" viewBox="0 0 24 24" { ...svgProps } aria-hidden="true">
+    <svg class="btn-link-img" viewBox="0 0 24 24" { ...svgProps }
+        aria-hidden="true">
         <title>{ title }</title>
         <slot />
     </svg>

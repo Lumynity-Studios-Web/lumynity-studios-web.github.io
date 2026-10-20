@@ -1,18 +1,18 @@
 ---
-import { getCollection, type CollectionEntry, render } from 'astro:content';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
 
 export const partial = true;
 
 export async function getStaticPaths() {
-  const posts = await getCollection('news');
-  return posts.map(post => ({
-    params: { id: post.id },
-    props: { post },
-  }));
+    const posts = await getCollection('news');
+    return posts.map((post) => ({
+        params: { id: post.id },
+        props: { post },
+    }));
 }
 
 interface Props {
-  post: CollectionEntry<'news'>,
+    post: CollectionEntry<'news'>;
 }
 const { post } = Astro.props;
 
