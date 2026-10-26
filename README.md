@@ -1,9 +1,7 @@
 # lumynitystudios.net
-
 About Lumynity Studios and a collection of documentations about our projects
 
 ## Commands
-
 | Command                  | Action                                                 |
 | :----------------------- | :----------------------------------------------------- |
 | `deno install`           | Installs dependencies                                  |
@@ -15,7 +13,5 @@ About Lumynity Studios and a collection of documentations about our projects
 | `deno task astro ...`    | Run CLI commands like `astro add`, `astro check`       |
 | `deno task astro --help` | Get help using the Astro CLI                           |
 
-| Alt Command         | Alt Action                                                                |
-| :------------------ | :------------------------------------------------------------------------ |
-| Run `open-site.bat` | Installs dependencies if not installed, then starts local dev server      |
-| Run `open-site.bat` | Starts local dev server at `localhost:2137` if dependencies are installed |
+## Developer Information
+For developer information, rules and guidelines how to develop and maintain this repository and site, go to `..DEV/README.md`.
