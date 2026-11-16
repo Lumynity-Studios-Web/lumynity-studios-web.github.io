@@ -29,7 +29,9 @@ jobs:
             - name: Build site
               env:
                   DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
-              run: 'deno task build'
+              run: |
+                  deno x astro sync
+                  deno task build
 
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v4
