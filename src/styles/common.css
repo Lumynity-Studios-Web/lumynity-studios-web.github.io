@@ -1,0 +1,129 @@
+/* Common layout CSS */
+:root {
+    --w-max: 1000px; /* Max width for most elements */
+    --h-max: 500px; /* Max height for most elements */
+    --w-s: 600px; /* Default small width for most elements */
+    --w-m: 700px; /* Default medium width for most elements */
+    --w-l: 800px; /* Default large width for most elements */
+    --w-xl: 900px; /* Default XL width for most elements */
+
+    --btn-max: 80px; /* Max button width/height */
+    --btn-wh: 50px; /* Default button width/height */
+    --btn-round: 20px; /* Default button roundness */
+
+    --sqr-round-all: 15px;
+    --sqr-round-top: 15px 15px 0 0;
+    --sqr-round-dwn: 0 0 15px 15px;
+
+    --white: #fff;
+    --whiteish: #f0f0f0; /* pure white (fff) might cause eye train for some people (like Mili) */
+    --very-light-gray: #969ea7;
+    --light-gray: #7c8288;
+    --gray: #303236;
+    --dark-gray: #26292F;
+    --very-dark-gray: #16181C;
+    --close-black: #0a0b0c;
+    --black: #000;
+    --pink: #f0a8e8;
+    --magenta: #f748d4;
+    --purple: #9646f5;
+    --dark-purple: #4b1063;
+    --violet: #230b3d;
+    --box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+    --box-shadow-hard: 0 6px 14px rgba(0, 0, 0, 0.8);
+    --btn-link: linear-gradient(165deg, var(--dark-gray), var(--dark-purple));
+    --btn-link-hover: linear-gradient(165deg, var(--dark-purple), var(--violet));
+    --btn-link-outline-hover: linear-gradient(165deg, var(--magenta), var(--purple));
+
+    --brand-modrinth: #46d66d;
+    --brand-curseforge: #f16433;
+    --brand-discord: #5662f6;
+    --brand-twitter: #00a2f5;
+    /* GitHub stays white */
+    --brand-maven: #389fd6;
+
+    --font-nsans: "Noto Sans", Arial, Inter; /* Font for most of the website */
+    --font-varela: "Varela Round", Arial, Inter; /* Font for headers */
+    --font-jbmono: "JetBrains Mono", Arial, Inter; /* Font for code blocks */
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+html {
+    /* Ignored on most browsers but whatever */
+    zoom: reset;
+}
+body {
+    font-family: var(--font-nsans);
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--very-dark-gray);
+    background-image: linear-gradient(to bottom, var(--very-dark-gray) 60%,
+        var(--close-black) 100%);
+    background-attachment: fixed;
+    color: var(--whiteish);
+
+    min-height: 100vh; /* Guarantees at least full viewport height even if not enough content */
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+main {
+    flex: 1;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-varela);
+}
+
+hr {
+    background: linear-gradient(to right, transparent, var(--gray) 25%,
+        var(--gray) 75%, transparent);
+    border: none;
+    margin: 1rem auto;
+    width: 75%;
+    height: 2px;
+}
+
+/* top-left corner fixed position home button */
+.link-home {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+}
+
+/* Always present discalimer at the bottom of the page */
+.footer-disclaimer {
+    font-size: small;
+    letter-spacing: 0.05rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--light-gray);
+
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+}
+
+.wip-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+}

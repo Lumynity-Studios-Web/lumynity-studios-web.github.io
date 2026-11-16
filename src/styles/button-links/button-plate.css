@@ -1,0 +1,26 @@
+/* section container for team's social links for the home page only */
+.button-plate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--dark-gray);
+
+    border-radius: var(--sqr-round-all);
+    box-shadow: var(--box-shadow);
+
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.8rem;
+    gap: 2.5rem;
+
+    max-width: var(--w-max);
+    width: var(--w-s);
+}
+
+.button-plate > .btn-link {
+    transition: transform 0.25s ease;
+}
+.button-plate > .btn-link:hover {
+    transform: translateY(-5px);
+}
