@@ -2,7 +2,7 @@
 import Common from '../layouts/Common.astro';
 import '../styles/meet-the-team.css';
 
-import { fetchMember } from '../scripts/dc-fetch.js';
+import { getMember } from '../scripts/dc-fetch.js';
 
 /* TODO: expand on descriptions later */
 const modders = [
@@ -34,7 +34,7 @@ const modders = [
     {
         id: '1151478242675540109',
         occupation: 'Writer, Translator (GER)',
-        desc: "Placeholder description",
+        desc: 'Placeholder description',
     },
     {
         id: '577195801332154368',
@@ -63,14 +63,14 @@ const webdevs = [
 
 const java = await Promise.all(
     modders.map(async ({ id, ...info }) => ({
-        ...(await fetchMember(id)),
+        ...(await getMember(id)),
         ...info,
     })),
 );
 
 const web = await Promise.all(
     webdevs.map(async ({ id, ...info }) => ({
-        ...(await fetchMember(id)),
+        ...(await getMember(id)),
         ...info,
     })),
 );
