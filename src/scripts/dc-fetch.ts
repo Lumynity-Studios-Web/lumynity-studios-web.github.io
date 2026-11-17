@@ -1,7 +1,7 @@
 const API = 'https://discord.com/api/v10';
 const CDN = 'https://cdn.discordapp.com';
 
-const cache = new Map<string, CacheEntry>();
+const cache = new Map<string, CacheEntry | Promise<CacheMember>>();
 const cacheTimeout = Temporal.Duration.from({ minutes: 30 });
 interface CacheMember {
     name: string;
@@ -35,10 +35,16 @@ function exportMember(
 
 export async function getMember(id: string, avatarSize = 256): Promise<Member> {
     let member = getCachedMember(id);
-    if (member) return exportMember(id, member, avatarSize);
+    if (member) {
+        return exportMember(
+            id,
+            member instanceof Promise ? await member : member,
+            avatarSize,
+        );
+    }
 
-    member = await fetchMember(id);
-    setCachedMember(id, member);
+    const memberPromise = fetchMember(id);
+    member = await setCachedMember(id, memberPromise);
     return exportMember(id, member, avatarSize);
 }
 
@@ -77,10 +83,16 @@ async function fetchMember(id: string): Promise<CacheMember> {
     }
 }
 
-function getCachedMember(id: string): CacheMember | null {
+function getCachedMember(
+    id: string,
+): CacheMember | Promise<CacheMember> | null {
     const now = Temporal.Now.instant();
 
     const cachedMember = cache.get(id);
+
+    // If user is already being fetched
+    if (cachedMember instanceof Promise) return cachedMember;
+
     if (
         !cachedMember ||
         // If cache is out-of-date (cache expiry before now)
@@ -95,7 +107,13 @@ function getCachedMember(id: string): CacheMember | null {
     return cachedMember;
 }
 
-function setCachedMember(id: string, member: CacheMember) {
+async function setCachedMember(id: string, memberPromise: Promise<CacheMember>): Promise<CacheMember> {
+    cache.set(id, memberPromise);
+
+    const member = await memberPromise;
     const now = Temporal.Now.instant();
     cache.set(id, { updated: now, ...member });
+
+    // Avoids another await in calling code
+    return member;
 }
