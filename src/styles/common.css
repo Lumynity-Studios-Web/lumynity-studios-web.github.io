@@ -99,7 +99,7 @@ hr {
 
 /* top-left corner fixed position home button */
 .link-home {
-    position: absolute;
+    position: fixed;
     top: 12px;
     left: 12px;
 }
