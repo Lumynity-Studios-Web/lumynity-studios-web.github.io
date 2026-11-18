@@ -1,0 +1,40 @@
+---
+import { getMember } from './scripts/dc-fetch';
+
+export interface MemberDescription {
+    id: string;
+    occupation: string;
+    desc?: string;
+}
+
+interface Props {
+    members: MemberDescription[];
+}
+const { members } = Astro.props;
+if (!(members instanceof Array)) {
+    throw new Error(
+        '`members` property must be an `Array` of `MemberDescription`',
+    );
+}
+
+const resolved = await Promise.all(
+    members.map(async ({ id, ...info }) => ({
+        ...(await getMember(id)),
+        ...info,
+    })),
+);
+---
+<section class="member-tabs">
+    <h2 class="team-type-header"><slot /></h2>
+
+    { resolved.map((member) => (
+        <div class="member-tab">
+            <img class="member-pfp" src={ member.avatar } alt={ `${member.name}'s Discord avatar` } width="128" height="128" />
+            <div>
+                <h3 class="member-name">{ member.name }</h3>
+                <p class="member-occupation">{ member.occupation }</p>
+                <p class="member-desc">{ member.desc }</p>
+            </div>
+        </div>
+    )) }
+</section>

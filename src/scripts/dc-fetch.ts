@@ -107,7 +107,10 @@ function getCachedMember(
     return cachedMember;
 }
 
-async function setCachedMember(id: string, memberPromise: Promise<CacheMember>): Promise<CacheMember> {
+async function setCachedMember(
+    id: string,
+    memberPromise: Promise<CacheMember>,
+): Promise<CacheMember> {
     cache.set(id, memberPromise);
 
     const member = await memberPromise;

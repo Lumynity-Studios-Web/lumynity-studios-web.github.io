@@ -2,10 +2,10 @@
 import Common from '../layouts/Common.astro';
 import '../styles/meet-the-team.css';
 
-import { getMember } from '../scripts/dc-fetch.js';
+import { default as Members, type MemberDescription } from '../Members.astro';
 
 /* TODO: expand on descriptions later */
-const modders = [
+const modders: MemberDescription[] = [
     {
         id: '942863021733212191',
         occupation: 'Lead Programmer, Artist, Translator (ENG, POL)',
@@ -47,7 +47,8 @@ const modders = [
         desc: 'Placeholder description',
     },
 ];
-const webdevs = [
+
+const webdevs: MemberDescription[] = [
     {
         id: '416282090397761547',
         occupation: 'Lead developer',
@@ -56,54 +57,16 @@ const webdevs = [
     {
         id: '942863021733212191',
         occupation: 'Developer, Artist, Writer',
-        desc: '',
     }, /* leave empty, don't repeat descriptions */
-    { id: '1151478242675540109', occupation: 'Artist, Writer', desc: '' },
+    { id: '1151478242675540109', occupation: 'Artist, Writer' },
 ];
 
-const java = await Promise.all(
-    modders.map(async ({ id, ...info }) => ({
-        ...(await getMember(id)),
-        ...info,
-    })),
-);
-
-const web = await Promise.all(
-    webdevs.map(async ({ id, ...info }) => ({
-        ...(await getMember(id)),
-        ...info,
-    })),
-);
+const contributors: MemberDescription[] = [];
 ---
 <Common>
-    <!-- TODO: format it a bit more nicely -->
-
     <h1 class="meet-header">Meet The Team</h1>
-    <section id="member-tabs">
-        <h3 class="team-type-header">Minecraft Modders</h3>
-        {java.map((member) => (
-            <div class="member-tab">
-                <img class="member-pfp" src={member.avatar} alt={`${member.name}'s Discord avatar`} width="128" height="128">
-                <div>
-                    <h2 class="member-name">{member.name}</h2>
-                    <p class="member-occupation">{member.occupation}</p>
-                    <p class="member-desc">{member.desc}</p>
-                </div>
-            </div>
-        ))}
-    </section>
 
-    <section id="member-tabs">
-        <h3 class="team-type-header">Website Developers</h3>
-        {web.map((member) => (
-            <div class="member-tab">
-                <img class="member-pfp" src={member.avatar} alt={`${member.name}'s Discord avatar`} width="128" height="128">
-                <div>
-                    <h2 class="member-name">{member.name}</h2>
-                    <p class="member-occupation">{member.occupation}</p>
-                    <p class="member-desc">{member.desc}</p>
-                </div>
-            </div>
-        ))}
-    </section>
+    <Members members={ modders }>Minecraft Modders</Members>
+    <Members members={ webdevs }>Website Develoers</Members>
+    <Members members={ contributors }>Contributors</Members>
 </Common>
