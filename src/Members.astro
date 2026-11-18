@@ -1,4 +1,5 @@
 ---
+import type { HTMLAttributes } from "astro/types";
 import { getMember } from './scripts/dc-fetch';
 
 export interface MemberDescription {
@@ -7,10 +8,10 @@ export interface MemberDescription {
     desc?: string;
 }
 
-interface Props {
+interface Props extends HTMLAttributes<'section'> {
     members: MemberDescription[];
 }
-const { members } = Astro.props;
+const { members, ...attributes } = Astro.props;
 if (!(members instanceof Array)) {
     throw new Error(
         '`members` property must be an `Array` of `MemberDescription`',
@@ -24,7 +25,7 @@ const resolved = await Promise.all(
     })),
 );
 ---
-<section class="member-tabs">
+<section class="member-tabs" { ...attributes }>
     <h2 class="team-type-header"><slot /></h2>
 
     { resolved.map((member) => (
