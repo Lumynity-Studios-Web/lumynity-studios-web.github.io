@@ -37,10 +37,10 @@ function setSectionHeight(
     const height = gridSizes[gridArea];
 
     const headingHeight = getElementFullHeight(
-        section.querySelector(':scope > .team-type-header'),
+        section.querySelector(':scope > .team-type-header')!,
     );
 
-    const group = section.querySelector(':scope > .member-group');
+    const group = section.querySelector(':scope > .member-group')!;
     group.setAttribute('data-height', (height - headingHeight).toString());
 }
 
