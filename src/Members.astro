@@ -28,7 +28,7 @@ const resolved = await Promise.all(
 <section { ...attributes }>
     <h2 class="team-type-header"><slot /></h2>
 
-    <div class="member-tabs">
+    <div class="member-group">
         { resolved.map((member) => (
             <div class="member-tab">
                 <img class="member-pfp" src={ member.avatar } alt={ `${member.name}'s Discord avatar` } width="128" height="128" />

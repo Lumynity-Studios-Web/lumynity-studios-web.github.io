@@ -1,5 +1,3 @@
-/* TODO: format it a bit more nicely */
-
 #meet-header {
     font-size: 4rem;
     font-style: italic;
@@ -15,11 +13,11 @@
 
 #members-collection {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr;
     grid-template-areas:
-        "modders webdevs"
-        "modders contributors";
+        "modders"
+        "webdevs"
+        "contributors";
     justify-content: stretch;
 
     padding: 0px 30px;
@@ -32,25 +30,32 @@
     width: 100%;
     max-width: var(--w-max);
 }
-@media (max-width: 60em) {
-    #members-collection {
-        grid-template-columns: 1fr;
-        grid-template-areas:
-            "modders"
-            "webdevs"
-            "contributors";
-    }
-}
 
-.member-tabs {
+.member-group {
     display: flex;
     flex-direction: column;
     align-items: stretch;
 
     padding: 0px 15px;
     gap: 15px;
+}
 
-    mask-image: linear-gradient(transparent, white 10%, white 90%, transparent);
+@media (min-width: 60em) {
+    #members-collection {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto 1fr;
+        grid-template-areas:
+            "modders webdevs"
+            "modders contributors";
+    }
+
+    .fixed-layout .member-group {
+        height: attr(data-height px);
+        overflow-y: scroll;
+
+        mask-image: linear-gradient(transparent, white attr(data-gradient-top px),
+            white calc(100% - attr(data-gradient-bottom px)), transparent);
+    }
 }
 
 .member-tab {

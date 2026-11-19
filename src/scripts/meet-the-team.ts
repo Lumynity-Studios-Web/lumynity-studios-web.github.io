@@ -2,6 +2,9 @@ const header = document.getElementById('meet-header') as HTMLHeadingElement;
 const grid = document.getElementById(
     'members-collection',
 ) as HTMLDivElement;
+const memberGroups = document.getElementsByClassName(
+    'member-group',
+) as HTMLCollectionOf<HTMLDivElement>;
 const footer = document.getElementById(
     'footer-disclaimer',
 ) as HTMLDivElement;
@@ -26,14 +29,19 @@ function getElementFullHeight(element: HTMLElement): number {
     return marginTop + paddingTop + clientHeight + paddingBottom + marginBottom;
 }
 
-function setSectionHeight(section: HTMLElement, height: number) {
+function setSectionHeight(
+    section: HTMLElement,
+    gridSizes: { [area: string]: number },
+) {
+    const gridArea = section.style.gridArea;
+    const height = gridSizes[gridArea];
+
     const headingHeight = getElementFullHeight(
-        section.children[0] as HTMLHeadingElement,
+        section.querySelector(':scope > .team-type-header'),
     );
-    const tabGroup = section.children[1] as HTMLElement;
-    tabGroup.style.height = `${height - headingHeight}px`;
-    // TODO: add a class that triggers this and other effects such as the grid layout shift
-    tabGroup.style.overflowY = 'scroll';
+
+    const group = section.querySelector(':scope > .member-group');
+    group.setAttribute('data-height', (height - headingHeight).toString());
 }
 
 function resize() {
@@ -50,16 +58,23 @@ function resize() {
 
     const spaceRem = space / rootFontSize;
     if (spaceRem < minHeight) {
-        // TODO: fall back to the full-page layout and remove previous layout
+        grid.classList.remove('fixed-layout');
+        return;
     }
 
     const gridGap = getFloatProperty(globalThis.getComputedStyle(grid), 'gap');
     const halfSpace = (space - gridGap) / 2;
 
-    // TODO: name grid.children
-    setSectionHeight(grid.children[0] as HTMLElement, space);
-    setSectionHeight(grid.children[1] as HTMLElement, halfSpace);
-    setSectionHeight(grid.children[2] as HTMLElement, halfSpace);
+    const gridSizes = {
+        modders: space,
+        webdevs: halfSpace,
+        contributors: halfSpace,
+    };
+    for (const section of grid.children) {
+        setSectionHeight(section as HTMLElement, gridSizes);
+    }
+
+    grid.classList.add('fixed-layout');
 }
 
 globalThis.addEventListener('resize', (_event) => {
@@ -67,3 +82,22 @@ globalThis.addEventListener('resize', (_event) => {
     resize();
 });
 resize();
+
+function setGroupGradient(group: HTMLDivElement) {
+    const scrollMax = group.scrollHeight - group.clientHeight;
+    const scroll = group.scrollTop;
+
+    group.setAttribute('data-gradient-top', Math.min(scroll, 50).toString());
+    group.setAttribute(
+        'data-gradient-bottom',
+        Math.min(scrollMax - scroll, 50).toString(),
+    );
+}
+
+for (const tab of memberGroups) {
+    setGroupGradient(tab);
+    tab.addEventListener(
+        'scroll',
+        (event) => setGroupGradient(event.target as HTMLDivElement),
+    );
+}
