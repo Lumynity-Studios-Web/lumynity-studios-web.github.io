@@ -105,13 +105,11 @@ hr {
 }
 
 /* Always present discalimer at the bottom of the page */
-.footer-disclaimer {
+#footer-disclaimer {
     font-size: small;
     letter-spacing: 0.05rem;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
 
     color: var(--light-gray);
 

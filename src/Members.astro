@@ -1,5 +1,5 @@
 ---
-import type { HTMLAttributes } from "astro/types";
+import type { HTMLAttributes } from 'astro/types';
 import { getMember } from './scripts/dc-fetch';
 
 export interface MemberDescription {
@@ -25,17 +25,19 @@ const resolved = await Promise.all(
     })),
 );
 ---
-<section class="member-tabs" { ...attributes }>
+<section { ...attributes }>
     <h2 class="team-type-header"><slot /></h2>
 
-    { resolved.map((member) => (
-        <div class="member-tab">
-            <img class="member-pfp" src={ member.avatar } alt={ `${member.name}'s Discord avatar` } width="128" height="128" />
-            <div>
-                <h3 class="member-name">{ member.name }</h3>
-                <p class="member-occupation">{ member.occupation }</p>
-                <p class="member-desc">{ member.desc }</p>
+    <div class="member-tabs">
+        { resolved.map((member) => (
+            <div class="member-tab">
+                <img class="member-pfp" src={ member.avatar } alt={ `${member.name}'s Discord avatar` } width="128" height="128" />
+                <div>
+                    <h3 class="member-name">{ member.name }</h3>
+                    <p class="member-occupation">{ member.occupation }</p>
+                    <p class="member-desc">{ member.desc }</p>
+                </div>
             </div>
-        </div>
-    )) }
+        )) }
+    </div>
 </section>

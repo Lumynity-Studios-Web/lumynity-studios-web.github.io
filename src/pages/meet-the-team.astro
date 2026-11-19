@@ -64,11 +64,16 @@ const webdevs: MemberDescription[] = [
 const contributors: MemberDescription[] = [];
 ---
 <Common>
-    <h1 class="meet-header">Meet The Team</h1>
+    <h1 id="meet-header">Meet The Team</h1>
 
     <div id="members-collection">
-        <Members members={ modders } id="members-modders">Minecraft Modders</Members>
-        <Members members={ webdevs } id="members-webdevs">Website Develoers</Members>
-        <Members members={ contributors } id="members-contributors">Contributors</Members>
+        <Members members={ modders }
+            style="grid-area: modders;">Minecraft Modders</Members>
+        <Members members={ webdevs }
+            style="grid-area: webdevs;">Website Develoers</Members>
+        <Members members={ contributors }
+            style="grid-area: contributors;">Contributors</Members>
     </div>
 </Common>
+
+<script src="../scripts/meet-the-team.ts"></script>
