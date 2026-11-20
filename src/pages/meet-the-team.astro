@@ -2,47 +2,47 @@
 import Common from '../layouts/Common.astro';
 import '../styles/meet-the-team.css';
 
-import { default as Members, type MemberDescription } from '../Members.astro';
+import { default as Members, type MemberDescription } from '../components/Members.astro';
 
 /* TODO: expand on descriptions later */
 const modders: MemberDescription[] = [
     {
-        id: '942863021733212191',
+        id: '942863021733212191', /* Millie */
         occupation: 'Lead Programmer, Artist, Translator (ENG, POL)',
         desc: 'Placeholder description',
     },
     {
-        id: '625373665508327434',
+        id: '625373665508327434', /* Appels */
         occupation: 'Lead Programmer',
         desc: 'Placeholder description',
     },
     {
-        id: '888875236563517481',
+        id: '888875236563517481', /* Vivi */
         occupation: 'Programmer, Translator (ES)',
         desc: 'Placeholder description',
     },
     {
-        id: '796961637004738590',
+        id: '796961637004738590', /* Pollo */
         occupation: 'Artist, Translator (ES)',
         desc: 'Placeholder description',
     },
     {
-        id: '1290096840850542676',
+        id: '1290096840850542676', /* DGiraffe */
         occupation: 'Music Producer',
         desc: 'Placeholder description',
     },
     {
-        id: '1151478242675540109',
+        id: '1151478242675540109', /* Faye */
         occupation: 'Writer, Translator (GER)',
         desc: 'Placeholder description',
     },
     {
-        id: '577195801332154368',
+        id: '577195801332154368', /* John */
         occupation: 'Translator (RUS)',
         desc: 'Placeholder description',
     },
     {
-        id: '776670925688930304',
+        id: '776670925688930304', /* Mary */
         occupation: 'Translator (POR)',
         desc: 'Placeholder description',
     },
@@ -50,27 +50,64 @@ const modders: MemberDescription[] = [
 
 const webdevs: MemberDescription[] = [
     {
-        id: '416282090397761547',
+        id: '416282090397761547', /* Tom */
         occupation: 'Lead developer',
         desc: 'Placeholder description',
     },
-    {
-        id: '942863021733212191',
+    { /* Don't repeat descriptions for members that already had it defined elsewhere */
+        id: '942863021733212191', /* Millie */
         occupation: 'Developer, Artist, Writer',
-    }, /* leave empty, don't repeat descriptions */
-    { id: '1151478242675540109', occupation: 'Artist, Writer' },
+    },
+    { 
+        id: '1151478242675540109', /* Faye */
+        occupation: 'Artist, Writer' 
+    },
 ];
 
-const contributors: MemberDescription[] = [];
+const contributors: MemberDescription[] = [
+    {
+        id: '510892645044715523', /* Marcos */
+        occupation: 'Collaborator',
+        desc: 'Developer and artist of Create: Totem Factory on which we collabed to make the 1.1 update and to offically bring the mod to Fabric'
+    },
+    {
+        id: '742595879520698429', /* BluSpring */
+        occupation: 'Code Contributor',
+        desc: 'Often contributor, and a somehow (probably) mentally stable crazy person. Local Forge hater (valid)'
+    },
+    /* TODO: Add Mahan as code contributor */
+    {
+        id: '708095717796872315', /* Mochila */
+        occupation: 'Art Contributor',
+        desc: 'Ex-Employee, credits for making a couple textures for our projects'
+    },
+    {
+        id: '847899510989520977', /* Gael */
+        occupation: 'Art Contributor',
+        desc: 'Ex-Employee, credits for making a couple textures for our projects'
+    },
+    /* TODO: Add Vik as art contributor */
+    /* TODO: Add Raze and Plume as translation contributors */
+    {
+        id: '131602100332396544', /* x3rt */
+        occupation: 'Code Contributor',
+        desc: 'Shulkers In Bundles contributor'
+    },
+    {
+        id: '769295574989275146', /* MJ */
+        occupation: 'Art Contributor',
+        desc: 'Avaritia x Create contributor'
+    }
+];
 ---
 <Common>
     <h1 id="meet-header">Meet The Team</h1>
 
     <div id="members-collection">
         <Members members={ modders }
-            style="grid-area: modders;">Minecraft Modders</Members>
+            style="grid-area: modders;">Mod Developers</Members>
         <Members members={ webdevs }
-            style="grid-area: webdevs;">Website Develoers</Members>
+            style="grid-area: webdevs;">Website Developers</Members>
         <Members members={ contributors }
             style="grid-area: contributors;">Contributors</Members>
     </div>
