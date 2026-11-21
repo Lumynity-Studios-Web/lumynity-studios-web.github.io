@@ -15,9 +15,15 @@ interface Props {
     post: CollectionEntry<'news'>;
 }
 const { post } = Astro.props;
+const { date } = post.data;
+
+function formatISODate(date: Date): string {
+    return date.toISOString().slice(0, 10);
+}
 
 const { Content } = await render(post);
 ---
+{/*<time
+    datetime={ formatISODate(date) }>{ date.toLocaleDateString('en-GB') }</time>*/}
 
-{/* <h1>{post.data.title}</h1> */}
 <Content />
