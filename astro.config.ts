@@ -1,5 +1,11 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { assert } from 'node:console';
+import { z } from 'astro/zod';
+
+const debugSitemap = z.stringbool().default(false).parse(
+    Deno.env.get('DEBUG_SITEMAP'),
+);
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,7 +16,13 @@ export default defineConfig({
     image: {
         responsiveStyles: true,
     },
-    integrations: [sitemap({ filter: sitemapFilter })],
+    integrations: [
+        sitemap({
+            filter: debugSitemap
+                ? debugSitemapFilter(sitemapFilter)
+                : sitemapFilter,
+        }),
+    ],
 });
 
 function sitemapFilter(page: string): boolean {
@@ -25,4 +37,37 @@ function sitemapFilter(page: string): boolean {
     }
 
     return true;
+}
+
+function debugSitemapFilter(
+    filter: (page: string) => boolean,
+): (page: string) => boolean {
+    let first = true;
+
+    return (page) => {
+        if (first) {
+            first = false;
+            console.log(
+                `%c${
+                    new Date().toLocaleTimeString()
+                } %c[sitemap] %cDebugging sitemap`,
+                'color: grey',
+                'color: blue',
+                'color: unset',
+            );
+        }
+
+        const result = filter(page);
+        console.log(
+            `%c${new Date().toLocaleTimeString()} %c  ├─ %c${
+                result ? 'in' : 'ex'
+            }cluded %c${page}`,
+            'color: grey',
+            'color: blue',
+            `color: ${result ? 'green' : 'red'}`,
+            'color: unset',
+        );
+
+        return result;
+    };
 }
