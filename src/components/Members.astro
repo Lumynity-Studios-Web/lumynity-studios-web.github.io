@@ -36,7 +36,7 @@ const resolved = await Promise.all(
                 <div>
                     <h3 class="member-name">{ member.name }</h3>
                     <p class="member-occupation">{ member.occupation }</p>
-                    <p class="member-desc">{ member.desc }</p>
+                    { member.desc && <p class="member-desc">{ member.desc }</p> }
                 </div>
             </div>
         )) }
