@@ -1,9 +1,7 @@
-header {
-    padding: 2rem 0;
-}
-
 /* The big ass image at the top */
 #titlecard {
+    margin-top: 32px;
+
     max-width: var(--w-max);
     width: var(--w-s);
 }
@@ -15,9 +13,7 @@ header {
     justify-content: center;
     align-items: stretch;
 
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 48px;
+    margin: 32px auto;
 
     padding: 0px 30px;
     gap: 15px 15px;
