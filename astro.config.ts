@@ -14,7 +14,13 @@ export default defineConfig({
 });
 
 function sitemapFilter(page: string): boolean {
-    if (page.match(/^\/news\//)) {
+    const { origin, pathname } = new URL(page);
+    assert(
+        origin === 'https://lumynitystudios.net',
+        `unexpected sitemap origin '${origin}' (update sitemapFilter in astro.config.ts)`,
+    );
+
+    if (pathname.match(/^\/news\//)) {
         return false;
     }
 
