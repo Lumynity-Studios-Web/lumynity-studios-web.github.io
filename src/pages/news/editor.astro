@@ -13,6 +13,20 @@ const devMode = import.meta.env.DEV;
     <div id="editor"></div>
 
     { devMode && <EditorDev /> }
+
+    <dialog id="upload-dialog">
+        <form method="dialog">
+            <div>
+                <label for="upload-file">File: </label>
+                <input type="file" id="upload-file" name="file" accept=".md" required />
+            </div>
+
+            <div>
+                <input type="submit" name="submit" value="Upload" />
+                <input type="submit" name="submit" value="Cancel" formnovalidate />
+            </div>
+        </form>
+    </dialog>
 </Common>
 
 { !devMode && <script src="../../scripts/editor/static.ts"></script> }

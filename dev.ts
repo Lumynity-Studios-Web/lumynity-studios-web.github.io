@@ -4,7 +4,7 @@ export function integration(): AstroIntegration {
     return {
         name: 'lumynity:dev',
         hooks: {
-            'astro:config:setup'({ command, injectRoute}) {
+            'astro:config:setup'({ command, injectRoute }) {
                 if (command !== 'dev') return;
 
                 injectRoute({

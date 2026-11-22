@@ -6,26 +6,36 @@ const posts = await getPosts();
 ---
 <dialog id="load-dialog">
     <form method="dialog">
-        <select name="post">
-            { posts.map((post) => (
-                <option value={ post.id }>
-                    { post.id }
-                </option>
-            )) }
-        </select>
+        <div>
+            <label for="load-post">Post: </label>
+            <select id="load-post" name="post">
+                { posts.map((post) => (
+                    <option value={ post.id }>
+                        { post.id }
+                    </option>
+                )) }
+            </select>
+        </div>
 
-        <input type="submit" name="submit" value="Load" />
-        <input type="submit" name="submit" value="Cancel" formnovalidate />
+        <div>
+            <input type="submit" name="submit" value="Load" />
+            <input type="submit" name="submit" value="Cancel" formnovalidate />
+        </div>
     </form>
 </dialog>
 
 <dialog id="save-dialog">
     <form method="dialog">
-        <label for="save-filename">Filename (excluding extension): </label>
-        <input type="text" id="save-filename" name="filename" minlength="1" required />
+        <div>
+            <label for="save-filename">Filename (excluding extension): </label>
+            <input type="text" id="save-filename" name="filename" minlength="1"
+                required />
+        </div>
 
-        <input type="submit" name="submit" value="Save" />
-        <input type="submit" name="submit" value="Cancel" formnovalidate />
+        <div>
+            <input type="submit" name="submit" value="Save" />
+            <input type="submit" name="submit" value="Cancel" formnovalidate />
+        </div>
     </form>
 </dialog>
 

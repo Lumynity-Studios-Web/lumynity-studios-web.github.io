@@ -1,3 +1,3 @@
-import { init } from './main.ts';
+import { State } from './main.ts';
 
-init();
+new State();

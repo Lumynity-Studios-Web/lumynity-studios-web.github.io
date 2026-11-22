@@ -1,13 +1,8 @@
-import {
-    type CommandDefinition,
-    init,
-    newArticleCommand,
-} from '../../../scripts/editor/main.ts';
+import { type CommandDefinition, State } from '../../../scripts/editor/main.ts';
 
 const loadDialog = document.getElementById('load-dialog') as HTMLDialogElement;
 const saveDialog = document.getElementById('save-dialog') as HTMLDialogElement;
 
-let lastLoaded: string = '';
 const load: CommandDefinition = {
     name: 'lumynity:load',
     title: 'Load article',
@@ -22,17 +17,14 @@ const save: CommandDefinition = {
     innerHTML: '💾',
     action() {
         (saveDialog.querySelector('[name="filename"]') as HTMLInputElement)
-            .value = lastLoaded;
+            .value = state.lastFilename;
         saveDialog.showModal();
     },
 };
-const newArticle = newArticleCommand((filename) => {
-    lastLoaded = filename;
-});
 
-const { editor } = init({
+const state = new State({
     editCommandBarProps(props) {
-        props.commands.push('|', load, save, newArticle);
+        props.commands.splice(-3, 0, load, save);
     },
 });
 
@@ -51,9 +43,8 @@ loadDialog.querySelector(':scope > form')!
                 response.text()
             );
 
-            if (!editor) return;
-            editor.setContent(content);
-            lastLoaded = postId;
+            state.editor.setContent(content);
+            state.lastFilename = postId;
         })();
     });
 
@@ -67,7 +58,7 @@ saveDialog.querySelector(':scope > form')!
         const formdata = new FormData(event.target as HTMLFormElement);
         const postId = formdata.get('filename')!.toString();
 
-        const content = editor.getContent();
+        const content = state.editor.getContent();
 
         (async () => {
             const response = await fetch(`/news/${postId}.md`, {
