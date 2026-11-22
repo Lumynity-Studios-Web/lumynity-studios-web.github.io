@@ -21,6 +21,7 @@
         "@std/http": "jsr:@std/http@^1.1.4",
         "@std/path": "jsr:@std/path@^1.1.6",
         "astro": "npm:astro@^7.4.0",
+        "tiny-markdown-editor": "npm:tiny-markdown-editor@^0.2.35",
         // "sharp": "npm:sharp@^0.34.5",
         "typescript": "npm:typescript@7.1.0-dev.20261019.1" // @astrojs/ts-content-mapper requires typescript 7.1, set this to a stable version on release
     },

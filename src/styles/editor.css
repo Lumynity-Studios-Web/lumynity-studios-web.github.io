@@ -1,0 +1,18 @@
+body {
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: min(var(--w-l), calc(100% - 50px));
+}
+
+main > h1 {
+    text-align: center;
+}
+
+#editor {
+    flex: 1 0 20em;
+    overflow-y: scroll;
+}
