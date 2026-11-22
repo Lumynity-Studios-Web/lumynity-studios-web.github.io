@@ -3,6 +3,8 @@ import sitemap from '@astrojs/sitemap';
 import { assert } from 'node:console';
 import { z } from 'astro/zod';
 
+import { integration as devIntegration } from './dev.ts';
+
 const debugSitemap = z.stringbool().default(false).parse(
     Deno.env.get('DEBUG_SITEMAP'),
 );
@@ -17,6 +19,7 @@ export default defineConfig({
         responsiveStyles: true,
     },
     integrations: [
+        devIntegration(),
         sitemap({
             filter: debugSitemap
                 ? debugSitemapFilter(sitemapFilter)

@@ -37,6 +37,27 @@ export function init(
     return { editor, commandBar };
 }
 
+export function newArticleCommand(
+    setLastFilename: (filename: string) => void,
+): CommandDefinition {
+    return {
+        name: 'lumynity:new',
+        title: 'New article',
+        innerHTML: '+',
+        action(editor: Editor) {
+            setLastFilename('');
+            const date = new Date();
+            editor.setContent(`\
+---
+date: ${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}
+---
+# Article Title
+
+`);
+        },
+    };
+}
+
 export function defaultCommands(): (string | CommandDefinition)[] {
     return [
         'bold',

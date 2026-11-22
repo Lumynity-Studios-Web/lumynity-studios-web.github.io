@@ -8,7 +8,7 @@
         "astro": "astro",
         "dev": "astro dev",
         "build": "deno task tsc-check && astro build",
-        "preview": "deno task build && deno serve --allow-read preview.ts",
+        "preview": "deno task build && astro preview",
         "tsc-check": "tsc -noEmit --runExternalCode"
         // "check": "astro check"
     },

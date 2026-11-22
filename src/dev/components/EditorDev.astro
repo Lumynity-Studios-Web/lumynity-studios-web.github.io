@@ -1,6 +1,6 @@
 ---
 import '../styles/editor-dev.css';
-import { getPosts } from '../pages/news/index.json';
+import { getPosts } from '../../pages/news/index.json';
 
 const posts = await getPosts();
 ---
@@ -15,6 +15,16 @@ const posts = await getPosts();
         </select>
 
         <input type="submit" name="submit" value="Load" />
+        <input type="submit" name="submit" value="Cancel" formnovalidate />
+    </form>
+</dialog>
+
+<dialog id="save-dialog">
+    <form method="dialog">
+        <label for="save-filename">Filename (excluding extension): </label>
+        <input type="text" id="save-filename" name="filename" minlength="1" required />
+
+        <input type="submit" name="submit" value="Save" />
         <input type="submit" name="submit" value="Cancel" formnovalidate />
     </form>
 </dialog>

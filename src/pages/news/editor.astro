@@ -2,14 +2,10 @@
 import Common from '../../layouts/Common.astro';
 import 'tiny-markdown-editor/dist/tiny-mde.min.css';
 import '../../styles/editor.css';
-import { z } from 'astro/zod';
 
-import EditorDev from '../../components/EditorDev.astro';
+import EditorDev from '../../dev/components/EditorDev.astro';
 
-const devMode = import.meta.env.DEV &&
-    !z.stringbool().default(false).parse(import.meta.env.STATIC_EDITOR);
-
-if (devMode) import('../../styles/editor-dev.css');
+const devMode = import.meta.env.DEV;
 ---
 <Common title="Lumynity article editor">
     <h1>Article editor</h1>
