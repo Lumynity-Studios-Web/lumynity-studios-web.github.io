@@ -28,7 +28,10 @@ export class State {
             'commandbar',
         ) as HTMLDivElement;
 
-        const editorProps: EditorProps = { element: editorElement };
+        const editorProps: EditorProps = {
+            element: editorElement,
+            content: newContent(),
+        };
         if (options.editEditorProps) options.editEditorProps(editorProps, this);
         this.editor = new Editor(editorProps);
 
@@ -54,6 +57,13 @@ date: ${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}
 ---
 `;
 }
+function newContent(): string {
+    return `\
+${newFrontmatter()}
+# Article Title
+
+`;
+}
 
 export function newArticleCommand(state: State): CommandDefinition {
     return {
@@ -62,11 +72,7 @@ export function newArticleCommand(state: State): CommandDefinition {
         innerHTML: '+',
         action() {
             state.lastFilename = '';
-            state.editor.setContent(`\
-${newFrontmatter()}
-# Article Title
-
-`);
+            state.editor.setContent(newContent());
         },
     };
 }
