@@ -11,6 +11,14 @@ export function integration(): AstroIntegration {
                     pattern: '/news/[id].md',
                     entrypoint: './src/dev/pages/news/[id].md.ts',
                 });
+                injectRoute({
+                    pattern: '/news/images.json',
+                    entrypoint: './src/dev/pages/news/images.json.ts',
+                });
+                injectRoute({
+                    pattern: '/news/images/[filename]',
+                    entrypoint: './src/dev/pages/news/images/[filename].ts',
+                });
             },
         },
     };

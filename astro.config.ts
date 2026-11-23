@@ -1,7 +1,7 @@
-import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
-import { assert } from 'node:console';
+import { defineConfig } from 'astro/config';
 import { z } from 'astro/zod';
+import { assert } from 'node:console';
 
 import { integration as devIntegration } from './dev.ts';
 

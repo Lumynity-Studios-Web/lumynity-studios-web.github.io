@@ -1,8 +1,7 @@
-import { type CollectionEntry, getEntry } from 'astro:content';
-import { readFile } from 'node:fs/promises';
 import { type APIRoute } from 'astro';
+import { type CollectionEntry, getEntry } from 'astro:content';
+import { open, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
-import { writeFile } from 'node:fs/promises';
 
 export const prerender = false;
 
@@ -15,8 +14,10 @@ export const GET = (async ({ params }) => {
     );
     if (!entry) return new Response(null, notFound);
 
-    const postMD = await readFile(entry.filePath!, { encoding: 'utf-8' });
-    return new Response(postMD);
+    const postFile = await open(entry.filePath!);
+    return new Response(
+        postFile.readableWebStream({ autoClose: true }) as ReadableStream,
+    );
 }) satisfies APIRoute;
 
 export const PUT = (async ({ params, request }) => {
