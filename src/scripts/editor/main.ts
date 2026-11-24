@@ -93,38 +93,39 @@ export function newArticleCommand(state: State): CommandDefinition {
 }
 
 export function uploadArticleCommand(state: State): CommandDefinition {
-    const uploadDialog = document.getElementById(
+    const dialog = document.getElementById(
         'upload-dialog',
     ) as HTMLDialogElement;
+    const form = dialog.querySelector(':scope > form') as HTMLFormElement;
 
-    uploadDialog.querySelector(':scope > form')!
-        .addEventListener('submit', (_e: Event) => {
-            const event = _e as SubmitEvent;
+    form.addEventListener('submit', (_e: Event) => {
+        const event = _e as SubmitEvent;
 
-            const submit = event.submitter!.getAttribute('value');
-            if (submit === 'Cancel') return;
+        const submit = event.submitter!.getAttribute('value');
+        if (submit === 'Cancel') return;
 
-            const formdata = new FormData(event.target as HTMLFormElement);
-            const file = formdata.get('file') as File;
-            const name = file.name.replace(/\.md$/, '');
+        const formdata = new FormData(form);
+        const file = formdata.get('file') as File;
+        const name = file.name.replace(/\.md$/, '');
 
-            (async () => {
-                let content = await file.text();
-                if (!content.startsWith('---\n')) {
-                    content = newFrontmatter() + '\n' + content;
-                }
+        (async () => {
+            let content = await file.text();
+            if (!content.startsWith('---\n')) {
+                content = newFrontmatter() + '\n' + content;
+            }
 
-                state.editor.setContent(content);
-                state.lastFilename = name;
-            })();
-        });
+            state.editor.setContent(content);
+            state.lastFilename = name;
+        })();
+    });
 
     return {
         name: 'lumynity:upload',
         title: 'Upload article',
         innerHTML: '↥',
         action() {
-            uploadDialog.showModal();
+            form.reset();
+            dialog.showModal();
         },
     };
 }
