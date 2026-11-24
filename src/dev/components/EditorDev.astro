@@ -1,8 +1,11 @@
 ---
 import '../styles/editor-dev.css';
 import { getPosts } from '../../pages/news/index.json';
+import { imageExtensions } from '../pages/news/images.json';
 
 const posts = await getPosts();
+
+const imageUploadAccept = imageExtensions.join(',');
 ---
 <dialog id="load-dialog">
     <form method="dialog">
@@ -50,6 +53,30 @@ const posts = await getPosts();
 
         <div>
             <input type="submit" name="submit" value="Load" />
+            <input type="submit" name="submit" value="Cancel" formnovalidate />
+        </div>
+    </form>
+</dialog>
+
+<dialog id="upload-image-dialog">
+    <form method="dialog">
+        <div>
+            <label for="upload-image-file">File: </label>
+            <input type="file" id="upload-image-file" name="file"
+                accept={ imageUploadAccept } required />
+        </div>
+
+        <img />
+
+        <div>
+            <label for="upload-image-filename">Filename: </label>
+            <input type="text" id="upload-image-filename" name="filename"
+                minlength="1"
+                required />
+        </div>
+
+        <div>
+            <input type="submit" name="submit" value="Upload" />
             <input type="submit" name="submit" value="Cancel" formnovalidate />
         </div>
     </form>

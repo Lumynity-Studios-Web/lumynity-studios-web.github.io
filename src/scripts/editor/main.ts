@@ -45,7 +45,8 @@ export class State {
         }
         this.commandBar = new CommandBar(commandBarProps);
 
-        this.#lastFilename = localStorage.getItem('dev:editor.lastFilename') ?? '';
+        this.#lastFilename = localStorage.getItem('dev:editor.lastFilename') ??
+            '';
 
         // TODO: rate limit
         this.editor.addEventListener('change', (event) => {

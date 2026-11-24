@@ -2,10 +2,11 @@ import { type APIRoute, type ImageInputFormat } from 'astro';
 import { glob } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 
-const imageExtensions: ImageInputFormat[] = [
+export const imageExtensions: ImageInputFormat[] = [
     'jpeg',
     'jpg',
     'png',
+    'apng',
     'tiff',
     'webp',
     'gif',

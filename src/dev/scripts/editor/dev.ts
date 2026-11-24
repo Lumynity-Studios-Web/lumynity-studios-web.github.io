@@ -5,6 +5,9 @@ const saveDialog = document.getElementById('save-dialog') as HTMLDialogElement;
 const insertImageDialog = document.getElementById(
     'insert-image-dialog',
 ) as HTMLDialogElement;
+const uploadImageDialog = document.getElementById(
+    'upload-image-dialog',
+) as HTMLDialogElement;
 
 const load: CommandDefinition = {
     name: 'lumynity:load',
@@ -24,13 +27,18 @@ const save: CommandDefinition = {
         saveDialog.showModal();
     },
 };
+// TODO: convert to function (like in `editor/main.ts`) and disable when selection lost https://github.com/jefago/tiny-markdown-editor#selection-event
 const insertImage: CommandDefinition = {
     name: 'lumynity:insert-image',
     title: 'Insert existing image',
     innerHTML: '🖼',
     async action() {
-        const imageSelect = insertImageDialog.querySelector('[name="image"]')!;
+        const imageSelect = insertImageDialog.querySelector(
+            '[name="image"]',
+        ) as HTMLSelectElement;
         imageSelect.replaceChildren();
+        const imageElement = insertImageDialog.querySelector('img')!;
+        imageElement.alt = imageElement.title = imageElement.src = '';
         insertImageDialog.showModal();
 
         const images: string[] = await fetch('/news/images.json')
@@ -42,13 +50,30 @@ const insertImage: CommandDefinition = {
             option.innerText = option.value = filename;
             imageSelect.appendChild(option);
         }
+
+        imageElement.src = `/news/images/${imageSelect.value}`;
+        imageElement.alt = imageElement.title = imageSelect.value;
+    },
+};
+const uploadImage: CommandDefinition = {
+    name: 'lumynity:upload-image',
+    title: 'Upload image',
+    innerHTML: '',
+    action() {
+        (uploadImageDialog.querySelector(':scope > form') as HTMLFormElement)
+            .reset();
+
+        const imageElement = uploadImageDialog.querySelector('img')!;
+        imageElement.alt = imageElement.title = imageElement.src = '';
+
+        uploadImageDialog.showModal();
     },
 };
 
 const state = new State({
     editCommandBarProps(props) {
         props.commands.splice(-3, 0, load, save);
-        props.commands.push('|', insertImage);
+        props.commands.push('|', insertImage, uploadImage);
     },
 });
 
@@ -103,7 +128,8 @@ saveDialog.querySelector(':scope > form')!
     .addEventListener('change', (event: Event) => {
         const target = event.target as HTMLSelectElement;
         const imageElement = insertImageDialog.querySelector('img')!;
-        imageElement.setAttribute('src', `/news/images/${target.value}`);
+        imageElement.src = `/news/images/${target.value}`;
+        imageElement.alt = imageElement.title = target.value;
     });
 
 insertImageDialog.querySelector(':scope > form')!
@@ -116,5 +142,64 @@ insertImageDialog.querySelector(':scope > form')!
         const formdata = new FormData(event.target as HTMLFormElement);
         const image = formdata.get('image')!.toString();
 
-        state.editor.paste(`![](./${image})`);
+        state.editor.wrapSelection('![', `](./${image})`);
+        const focus = state.editor.getSelection(false)!;
+        const anchor = state.editor.getSelection(true)!;
+        if (focus.col !== anchor.col || focus.row !== anchor.row) {
+            return;
+        }
+
+        const placeholder = 'Image alt text';
+        state.editor.paste(placeholder);
+        state.editor.setSelection({
+            row: focus.row,
+            col: focus.col + placeholder.length,
+        }, focus);
+    });
+
+(uploadImageDialog.querySelector('[name="file"]') as HTMLInputElement)
+    .addEventListener('change', (event: Event) => {
+        const target = event.target as HTMLInputElement;
+        const imageElement = uploadImageDialog.querySelector('img')!;
+
+        const file = target.files!.item(0);
+        if (!file) {
+            imageElement.src = imageElement.alt = imageElement.title = '';
+            return;
+        }
+        const url = URL.createObjectURL(file);
+
+        imageElement.src = url;
+        (uploadImageDialog.querySelector(
+            '[name="filename"]',
+        ) as HTMLInputElement).value =
+            imageElement.alt =
+            imageElement.title =
+                file.name;
+    });
+
+uploadImageDialog.querySelector(':scope > form')!
+    .addEventListener('submit', (_e: Event) => {
+        const event = _e as SubmitEvent;
+
+        const submit = event.submitter!.getAttribute('value');
+        if (submit === 'Cancel') return;
+
+        const formdata = new FormData(event.target as HTMLFormElement);
+        const file = formdata.get('file') as File;
+        const filename = formdata.get('filename')!.toString();
+
+        (async () => {
+            const response = await fetch(`/news/images/${filename}`, {
+                body: file,
+                method: 'PUT',
+            });
+            if (!response.ok) {
+                alert(
+                    `❌ Failed to save image '${filename}'!`,
+                );
+                return;
+            }
+            alert(`✅ Saved image '${filename}'.`);
+        })();
     });
