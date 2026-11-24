@@ -8,6 +8,20 @@ export const prerender = false;
 
 const notFound = { status: 404, statusText: 'Not found' };
 
+function imageMIME(filename: string): string {
+    const extensionDot = filename.lastIndexOf('.');
+    const extension = filename.slice(extensionDot + 1);
+
+    // https://www.iana.org/assignments/media-types#image
+    // `../images.json.ts` > `imageExtensions`
+    const type = {
+        jpg: 'jpeg',
+        svg: 'svg+xml',
+    }[extension] ?? extension;
+
+    return 'image/' + type;
+}
+
 export const GET = (async ({ params }) => {
     if (!matchesGlob(params.filename!, imageGlob)) {
         return new Response(null, notFound);
@@ -22,8 +36,13 @@ export const GET = (async ({ params }) => {
                 ),
             ),
         );
+
+        const headers = new Headers();
+        headers.set('Content-Type', imageMIME(params.filename!));
+
         return new Response(
             imageFile.readableWebStream({ autoClose: true }) as ReadableStream,
+            { headers },
         );
     } catch (error) {
         if ((error as NodeJS.ErrnoException).code === 'ENOENT') {

@@ -39,4 +39,20 @@ const posts = await getPosts();
     </form>
 </dialog>
 
+<dialog id="insert-image-dialog">
+    <form method="dialog">
+        <div>
+            <label for="insert-image-image">Image: </label>
+            <select id="insert-image-image" name="image"></select>
+        </div>
+
+        <img />
+
+        <div>
+            <input type="submit" name="submit" value="Load" />
+            <input type="submit" name="submit" value="Cancel" formnovalidate />
+        </div>
+    </form>
+</dialog>
+
 <script src="../scripts/editor/dev.ts"></script>

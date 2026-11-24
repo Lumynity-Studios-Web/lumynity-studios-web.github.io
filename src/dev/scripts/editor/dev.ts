@@ -2,6 +2,9 @@ import { type CommandDefinition, State } from '../../../scripts/editor/main.ts';
 
 const loadDialog = document.getElementById('load-dialog') as HTMLDialogElement;
 const saveDialog = document.getElementById('save-dialog') as HTMLDialogElement;
+const insertImageDialog = document.getElementById(
+    'insert-image-dialog',
+) as HTMLDialogElement;
 
 const load: CommandDefinition = {
     name: 'lumynity:load',
@@ -21,10 +24,33 @@ const save: CommandDefinition = {
         saveDialog.showModal();
     },
 };
+const insertImage: CommandDefinition = {
+    name: 'lumynity:insert-image',
+    title: 'Insert existing image',
+    innerHTML: '🖼',
+    async action() {
+        const imageSelect = insertImageDialog.querySelector('[name="image"]')!;
+        imageSelect.replaceChildren();
+        insertImageDialog.showModal();
+
+        const images: string[] = await fetch('/news/images.json').then((
+            response,
+        ) => response.json());
+        console.log(images);
+        for (const filename of images) {
+            const option = document.createElement(
+                'option',
+            ) as HTMLOptionElement;
+            option.innerText = option.value = filename;
+            imageSelect.appendChild(option);
+        }
+    },
+};
 
 const state = new State({
     editCommandBarProps(props) {
         props.commands.splice(-3, 0, load, save);
+        props.commands.push('|', insertImage);
     },
 });
 
@@ -73,4 +99,24 @@ saveDialog.querySelector(':scope > form')!
             }
             alert(`✅ Saved article '${postId}'.`);
         })();
+    });
+
+(insertImageDialog.querySelector('[name="image"]') as HTMLSelectElement)
+    .addEventListener('change', (event: Event) => {
+        const target = event.target as HTMLSelectElement;
+        const imageElement = insertImageDialog.querySelector('img')!;
+        imageElement.setAttribute('src', `/news/images/${target.value}`);
+    });
+
+insertImageDialog.querySelector(':scope > form')!
+    .addEventListener('submit', (_e: Event) => {
+        const event = _e as SubmitEvent;
+
+        const submit = event.submitter!.getAttribute('value');
+        if (submit === 'Cancel') return;
+
+        const formdata = new FormData(event.target as HTMLFormElement);
+        const image = formdata.get('image')!.toString();
+
+        state.editor.paste(`![](./${image})`);
     });
