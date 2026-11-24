@@ -214,7 +214,7 @@ function uploadImageCommand(): CommandDefinition {
     return {
         name: 'lumynity:upload-image',
         title: 'Upload image',
-        innerHTML: '',
+        innerHTML: '↥',
         action() {
             form.reset();
             imageElement.alt = imageElement.title = imageElement.src = '';
