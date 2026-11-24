@@ -2,14 +2,18 @@
 import Common from '../layouts/Common.astro';
 import '../styles/meet-the-team.css';
 
-import { default as Members, type MemberDescription } from '../components/Members.astro';
+import {
+    default as Members,
+    type MemberDescription,
+} from '../components/Members.astro';
 
 /* TODO: expand on descriptions later */
 const modders: MemberDescription[] = [
     {
         id: '942863021733212191', /* Millie */
         occupation: 'Lead Programmer, Artist, Translator (ENG, POL)',
-        desc: 'Team lead, workacholic and a catgirl Vtuber. Started it all because she got stuck on developing True End',
+        desc:
+            'Team lead, workacholic and a catgirl Vtuber. Started it all because she got stuck on developing True End',
     },
     {
         id: '625373665508327434', /* Appels */
@@ -54,13 +58,14 @@ const webdevs: MemberDescription[] = [
         occupation: 'Lead developer',
         desc: 'Placeholder description',
     },
-    { /* Don't repeat descriptions for members that already had it defined elsewhere */
+    {
+        /* Don't repeat descriptions for members that already had it defined elsewhere */
         id: '942863021733212191', /* Millie */
         occupation: 'Developer, Artist, Writer',
     },
-    { 
+    {
         id: '1151478242675540109', /* Faye */
-        occupation: 'Artist, Writer' 
+        occupation: 'Artist, Writer',
     },
 ];
 
@@ -68,53 +73,58 @@ const contributors: MemberDescription[] = [
     {
         id: '510892645044715523', /* Marcos */
         occupation: 'Collaborator',
-        desc: 'Developer and artist of Create: Totem Factory on which we collabed to make the 1.1 update and to offically bring the mod to Fabric'
+        desc:
+            'Developer and artist of Create: Totem Factory on which we collabed to make the 1.1 update and to offically bring the mod to Fabric',
     },
     {
         id: '742595879520698429', /* BluSpring */
         occupation: 'Code Contributor',
-        desc: 'Often contributor, and a somehow (probably) mentally stable crazy person. Local Forge hater (valid)'
+        desc:
+            'Often contributor, and a somehow (probably) mentally stable crazy person. Local Forge hater (valid)',
     },
     {
         id: '799671513074761742', /* Mahan */
         occupation: 'Code Contributor',
-        desc: 'Ex-exployee, no one remembers what he did other than some entity code for True End'
+        desc:
+            'Ex-exployee, no one remembers what he did other than some entity code for True End',
     },
     {
         id: '708095717796872315', /* Mochila */
         occupation: 'Art Contributor',
-        desc: 'Ex-employee, made some sprites for True End, Under The Stars, Avaritia x Create and Create: Totem Factory'
+        desc:
+            'Ex-employee, made some sprites for True End, Under The Stars, Avaritia x Create and Create: Totem Factory',
     },
     {
         id: '847899510989520977', /* Gael */
         occupation: 'Art Contributor',
-        desc: 'Ex-employee, made a few sprites for Under The Stars'
+        desc: 'Ex-employee, made a few sprites for Under The Stars',
     },
     {
         id: '1298243778045415458', /* Vik */
         occupation: 'Art Contributor',
-        desc: 'Ex-employee, made most block textures for Avarita x Create'
+        desc: 'Ex-employee, made most block textures for Avarita x Create',
     },
     {
         id: '338746495450873867', /* Raze */
         occupation: 'Translation Contributior',
-        desc: 'Ex-employee, now our Discord moderator; helped translate some of our projects to Italian'
+        desc:
+            'Ex-employee, now our Discord moderator; helped translate some of our projects to Italian',
     },
     {
         id: '779026967990370344', /* Plume */
         occupation: 'Translation Contributior',
-        desc: 'Ex-employee, helped translate some of our projects to French'
+        desc: 'Ex-employee, helped translate some of our projects to French',
     },
     {
         id: '131602100332396544', /* x3rt */
         occupation: 'Code Contributor',
-        desc: 'Helped expand functionality of Shulkers In Bundles'
+        desc: 'Helped expand functionality of Shulkers In Bundles',
     },
     {
         id: '769295574989275146', /* MJ */
         occupation: 'Art Contributor',
-        desc: 'Created the new icon for Avaritia x Create'
-    }
+        desc: 'Created the new icon for Avaritia x Create',
+    },
 ];
 ---
 <Common>

@@ -1,7 +1,9 @@
 # lumynitystudios.net
+
 About Lumynity Studios and a collection of documentations about our projects
 
 ## Commands
+
 | Command                  | Action                                                 |
 | :----------------------- | :----------------------------------------------------- |
 | `deno install`           | Installs dependencies                                  |
@@ -14,4 +16,6 @@ About Lumynity Studios and a collection of documentations about our projects
 | `deno task astro --help` | Get help using the Astro CLI                           |
 
 ## Developer Information
-For developer information, rules and guidelines how to develop and maintain this repository and site, go to `..DEV/README.md`.
+
+For developer information, rules and guidelines how to develop and maintain this
+repository and site, go to `..DEV/README.md`.

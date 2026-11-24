@@ -58,7 +58,8 @@
         /* Invert content-box gradient to not apply gradient to scrollbar */
         mask: linear-gradient(white 0 0) subtract,
             linear-gradient(white, transparent attr(data-gradient-top px),
-            transparent calc(100% - attr(data-gradient-bottom px)), white) content-box;
+            transparent calc(100% - attr(data-gradient-bottom px)), white)
+            content-box;
 
         scrollbar-color: var(--whiteish) transparent;
     }
