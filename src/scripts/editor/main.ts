@@ -18,7 +18,7 @@ export type CommandDefinition = Exclude<
 export class State {
     editor: Editor;
     commandBar: CommandBar;
-    lastFilename: string;
+    #lastFilename: string;
 
     constructor(options: InitOptions = {}) {
         const editorElement = document.getElementById(
@@ -30,7 +30,7 @@ export class State {
 
         const editorProps: EditorProps = {
             element: editorElement,
-            content: newContent(),
+            content: localStorage.getItem('dev:editor.content') ?? newContent(),
         };
         if (options.editEditorProps) options.editEditorProps(editorProps, this);
         this.editor = new Editor(editorProps);
@@ -45,7 +45,21 @@ export class State {
         }
         this.commandBar = new CommandBar(commandBarProps);
 
-        this.lastFilename = '';
+        this.#lastFilename = localStorage.getItem('dev:editor.lastFilename') ?? '';
+
+        // TODO: rate limit
+        this.editor.addEventListener('change', (event) => {
+            localStorage.setItem('dev:editor.content', event.content);
+        });
+    }
+
+    get lastFilename(): string {
+        return this.#lastFilename;
+    }
+
+    set lastFilename(value: string) {
+        this.#lastFilename = value;
+        localStorage.setItem('dev:editor.lastFilename', this.lastFilename);
     }
 }
 

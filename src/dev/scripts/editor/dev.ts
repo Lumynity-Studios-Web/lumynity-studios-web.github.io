@@ -33,10 +33,8 @@ const insertImage: CommandDefinition = {
         imageSelect.replaceChildren();
         insertImageDialog.showModal();
 
-        const images: string[] = await fetch('/news/images.json').then((
-            response,
-        ) => response.json());
-        console.log(images);
+        const images: string[] = await fetch('/news/images.json')
+            .then((response) => response.json());
         for (const filename of images) {
             const option = document.createElement(
                 'option',
