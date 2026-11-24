@@ -15,6 +15,8 @@ export type CommandDefinition = Exclude<
     string
 >;
 
+export type Position = { row: number; col: number };
+
 export class State {
     editor: Editor;
     commandBar: CommandBar;
@@ -62,6 +64,17 @@ export class State {
         this.#lastFilename = value;
         localStorage.setItem('dev:editor.lastFilename', this.lastFilename);
     }
+
+    getEndPosition(): Position {
+        const row = this.editor.lines.length - 1;
+        const col = this.editor.lines[row].length;
+        return { row, col };
+    }
+
+    setSelectionToEnd() {
+        const end = this.getEndPosition();
+        this.editor.setSelection(end);
+    }
 }
 
 function newFrontmatter(): string {
@@ -77,7 +90,7 @@ function newContent(): string {
 ${newFrontmatter()}
 # Article Title
 
-`;
+Article text...`;
 }
 
 export function newArticleCommand(state: State): CommandDefinition {
@@ -88,6 +101,7 @@ export function newArticleCommand(state: State): CommandDefinition {
         action() {
             state.lastFilename = '';
             state.editor.setContent(newContent());
+            state.setSelectionToEnd();
         },
     };
 }

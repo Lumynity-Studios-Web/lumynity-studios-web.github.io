@@ -115,6 +115,10 @@ function insertImageCommand(state: State): CommandDefinition {
         const formdata = new FormData(form);
         const image = formdata.get('image')!.toString();
 
+        if (!state.editor.getSelection()) {
+            state.setSelectionToEnd();
+        }
+
         state.editor.wrapSelection('![', `](./${image})`);
         const focus = state.editor.getSelection(false)!;
         const anchor = state.editor.getSelection(true)!;
